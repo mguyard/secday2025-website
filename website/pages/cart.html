@@ -919,11 +919,34 @@
                 goToStep(1);
             });
             
-            document.getElementById('to-step-3').addEventListener('click', function() {
-                // Vérifier la validité du formulaire
+            document.getElementById('to-step-3').addEventListener('click', function(e) {
+                e.preventDefault(); // Empêcher la soumission normale du formulaire
                 const form = document.getElementById('customer-info-form');
+                
                 if (form.checkValidity()) {
-                    goToStep(3);
+                    // Afficher les données de débogage
+                    if (debugMode) {
+                        const formData = new FormData(form);
+                        let debugData = {};
+                        formData.forEach((value, key) => { debugData[key] = value; });
+                        document.getElementById('debug-data-step2').textContent = JSON.stringify(debugData, null, 2);
+                        document.getElementById('debug-panel-step2').classList.remove('hidden');
+                    }
+                    
+                    // Soumettre le formulaire via fetch
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                    })
+                    .then(response => {
+                        console.log('Requête POST envoyée:', response);
+                        goToStep(3);
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de l\'envoi:', error);
+                        // Continuer quand même en mode démo
+                        goToStep(3);
+                    });
                 } else {
                     form.reportValidity();
                 }
@@ -933,28 +956,50 @@
                 goToStep(2);
             });
             
-            document.getElementById('complete-order').addEventListener('click', function() {
-                // Vérifier la validité du formulaire
+            document.getElementById('complete-order').addEventListener('click', function(e) {
+                e.preventDefault();
                 const form = document.getElementById('payment-form');
+                
                 if (form.checkValidity()) {
-                    // Générer un numéro de commande aléatoire
-                    orderNumber.textContent = getRandomOrderNumber();
+                    // Afficher les données de débogage
+                    if (debugMode) {
+                        const formData = new FormData(form);
+                        let debugData = {};
+                        formData.forEach((value, key) => { debugData[key] = value; });
+                        document.getElementById('debug-data-step3').textContent = JSON.stringify(debugData, null, 2);
+                        document.getElementById('debug-panel-step3').classList.remove('hidden');
+                    }
                     
-                    // Définir la date du jour
-                    orderDate.textContent = getCurrentDate();
-                    
-                    // Récupérer l'email du client
-                    orderEmail.textContent = document.getElementById('email').value;
-                    
-                    // Afficher la confirmation
-                    goToStep(4);
-                    
-                    // Vider le panier
-                    cart = [];
-                    localStorage.setItem('smashCart', JSON.stringify(cart));
-                    
-                    // Mettre à jour la barre de progression à 100%
-                    progressBar.style.width = '100%';
+                    // Soumettre le formulaire via fetch
+                    fetch(form.action, {
+                        method: 'POST',
+                        body: new FormData(form),
+                    })
+                    .then(response => {
+                        console.log('Requête POST envoyée:', response);
+                        
+                        // Générer un numéro de commande aléatoire
+                        orderNumber.textContent = getRandomOrderNumber();
+                        orderDate.textContent = getCurrentDate();
+                        orderEmail.textContent = document.getElementById('email').value;
+                        
+                        // Afficher la confirmation
+                        goToStep(4);
+                        
+                        // Vider le panier
+                        cart = [];
+                        localStorage.setItem('smashCart', JSON.stringify(cart));
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de l\'envoi:', error);
+                        // Continuer quand même en mode démo
+                        orderNumber.textContent = getRandomOrderNumber();
+                        orderDate.textContent = getCurrentDate();
+                        orderEmail.textContent = document.getElementById('email').value;
+                        goToStep(4);
+                        cart = [];
+                        localStorage.setItem('smashCart', JSON.stringify(cart));
+                    });
                 } else {
                     form.reportValidity();
                 }
