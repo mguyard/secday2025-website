@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billets pour les Tournois du Grand Chelem | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Ajout des styles pour aligner les boutons des billets -->
+    <style>
+        .ticket-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .ticket-content {
+            padding: 1.5rem; /* équivalent à p-6 */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .ticket-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ticket-description {
+            min-height: 3rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .ticket-date-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .ticket-button {
+            width: 100%;
+        }
+        
+        .ticket-phase-tag {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 9999px;
+            margin-left: auto;
+        }
+        
+        .tag-final {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+        
+        .tag-semi {
+            background-color: #fef3c7;
+            color: #b45309;
+        }
+        
+        .tag-quarter {
+            background-color: #e0f2fe;
+            color: #0369a1;
+        }
+        
+        .tag-early {
+            background-color: #ecfdf5;
+            color: #047857;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../images/logos/logo.png" alt="SMASH" class="h-14">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="../index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
+                    <a href="boutique-tickets.html" class="text-smash-green font-semibold transition">Billets</a>
+                    <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
+                    <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition">À propos</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-smash-green transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="../index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
+                <a href="boutique-tickets.html" class="text-smash-green font-semibold transition py-2">Billets</a>
+                <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
+                <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
+                <a href="contact.html" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-32" style="background-image: url('https://placehold.co/1920x600/111827/ffffff?text=Billets+Grand+Chelem')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-white text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Billets pour les Tournois du Grand Chelem</h1>
+                <p class="text-xl max-w-3xl mx-auto">Réservez vos places pour assister aux plus grands tournois de tennis. Une expérience inoubliable vous attend.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtres de recherche -->
+    <section class="py-8 bg-white shadow-md sticky top-16 z-30">
+        <div class="container mx-auto px-4">
+            <form class="flex flex-col md:flex-row gap-4 items-center">
+                <div class="w-full md:w-1/4">
+                    <label for="tournament" class="block text-sm font-medium text-gray-700 mb-1">Tournoi</label>
+                    <select id="tournament" name="tournament" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                        <option value="">Tous les tournois</option>
+                        <option value="australian-open">Open d'Australie</option>
+                        <option value="roland-garros">Roland Garros</option>
+                        <option value="wimbledon">Wimbledon</option>
+                        <option value="us-open">US Open</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <label for="date" class="block text-sm font-medium text-gray-700 mb-1">Date</label>
+                    <select id="date" name="date" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                        <option value="">Toutes les dates</option>
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <label for="ticket-type" class="block text-sm font-medium text-gray-700 mb-1">Type de billet</label>
+                    <select id="ticket-type" name="ticket-type" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                        <option value="">Tous les types</option>
+                        <option value="court-principal">Court principal</option>
+                        <option value="courts-annexes">Courts annexes</option>
+                        <option value="package">Packages</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-1/4 md:self-end">
+                    <button type="submit" class="w-full bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                        Rechercher
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Australian Open -->
+    <section id="australian-open" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-smash-blue">Open d'Australie</h2>
+                <span class="text-gray-600">Melbourne | 13-26 Janvier 2025</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/0077B6/ffffff?text=Rod+Laver+Arena')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Pass Rod Laver Arena</h3>
+                                <span class="ticket-phase-tag tag-early">1er tour</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Accès à la Rod Laver Arena pour les matchs du premier tour. Votre place est garantie pour tous les matchs programmés sur ce court.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>13 - 14 Janvier 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">189,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/0077B6/ffffff?text=Margaret+Court+Arena')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Pass Week-end Demi-finales</h3>
+                                <span class="ticket-phase-tag tag-semi">Demi-finales</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Accès aux demi-finales du simple messieurs et dames sur la Rod Laver Arena. L'intensité monte d'un cran !</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>24 - 25 Janvier 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">375,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/0077B6/ffffff?text=Finales+Australian+Open')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Pack Finales VIP</h3>
+                                <span class="ticket-phase-tag tag-final">Finales</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Vivez les finales femmes et hommes en VIP avec accès au salon, champagne et rencontre avec d'anciens champions.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>25 - 26 Janvier 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">890,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <a href="evenements.html#australian-open" class="text-smash-blue hover:underline">En savoir plus sur l'Open d'Australie</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roland Garros -->
+    <section id="roland-garros" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-smash-clay">Roland Garros</h2>
+                <span class="text-gray-600">Paris | 26 Mai - 8 Juin 2025</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/D13C32/ffffff?text=Court+Philippe+Chatrier')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Journée Court Philippe-Chatrier</h3>
+                                <span class="ticket-phase-tag tag-early">1ère semaine</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Accès au Court Philippe-Chatrier pour une journée complète de la première semaine. Profitez de plusieurs matchs des meilleurs joueurs.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>27 Mai 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">145,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/D13C32/ffffff?text=Court+Suzanne+Lenglen')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Pack Courts Annexes</h3>
+                                <span class="ticket-phase-tag tag-quarter">2ème semaine</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Accès aux courts annexes pour voir des matchs de double et juniors. Une occasion unique de voir les futurs champions de très près.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>2 Juin 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">95,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/D13C32/ffffff?text=Finale+Roland+Garros')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Finale Hommes Premium</h3>
+                                <span class="ticket-phase-tag tag-final">Finale</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Places premium pour la finale Messieurs avec vue imprenable sur le court et accès au village Roland-Garros.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>8 Juin 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">720,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <a href="evenements.html#roland-garros" class="text-smash-clay hover:underline">En savoir plus sur Roland Garros</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wimbledon -->
+    <section id="wimbledon" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-smash-green">Wimbledon</h2>
+                <span class="text-gray-600">Londres | 30 Juin - 13 Juillet 2025</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/007F5F/ffffff?text=Centre+Court')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Centre Court - Premier tour</h3>
+                                <span class="ticket-phase-tag tag-early">1er tour</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Vivez l'expérience du mythique Centre Court de Wimbledon pour les matchs du premier tour. L'élégance britannique à son apogée.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>30 Juin 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">210,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/007F5F/ffffff?text=Court+No+1')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Court No.1 - Quarts de finale</h3>
+                                <span class="ticket-phase-tag tag-quarter">Quarts</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Accès au Court No.1 pour les quarts de finale. Une journée entière de tennis de très haut niveau sur le gazon londonien.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>8 Juillet 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">340,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/007F5F/ffffff?text=Wimbledon+Finale')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Weekend Finales Complet</h3>
+                                <span class="ticket-phase-tag tag-final">Finales</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Le package ultime : billets pour les finales dames et messieurs sur Centre Court avec champagne, fraises et crème.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>12 - 13 Juillet 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">950,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <a href="evenements.html#wimbledon" class="text-smash-green hover:underline">En savoir plus sur Wimbledon</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- US Open -->
+    <section id="us-open" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-3xl font-bold text-smash-purple">US Open</h2>
+                <span class="text-gray-600">New York | 25 Août - 7 Septembre 2025</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Package 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/563D7C/ffffff?text=Arthur+Ashe+Stadium')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Arthur Ashe - Session Jour</h3>
+                                <span class="ticket-phase-tag tag-early">2ème tour</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Accès à l'Arthur Ashe Stadium en journée pour les matchs du deuxième tour. Une expérience new-yorkaise inoubliable.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>27 Août 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">180,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/563D7C/ffffff?text=US+Open+Night+Session')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Session Nocturne Premium</h3>
+                                <span class="ticket-phase-tag tag-semi">Demi-finales</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Vivez la magie des sessions nocturnes de l'US Open pour les demi-finales. L'ambiance électrique garantie !</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>4 Septembre 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">395,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Package 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow ticket-card">
+                    <div class="relative">
+                        <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/563D7C/ffffff?text=US+Open+Finals')"></div>
+                    </div>
+                    <div class="ticket-content">
+                        <div class="ticket-info">
+                            <div class="flex items-start mb-2">
+                                <h3 class="text-xl font-bold">Finale Hommes Prestige</h3>
+                                <span class="ticket-phase-tag tag-final">Finale</span>
+                            </div>
+                            <p class="text-gray-700 ticket-description">Package prestige pour la finale hommes avec accès aux loges VIP, restauration incluse et cadeau souvenir exclusif.</p>
+                        </div>
+                        <div class="ticket-date-price">
+                            <div class="text-sm text-gray-600">
+                                <i class="far fa-calendar-alt mr-2"></i>7 Septembre 2025
+                            </div>
+                            <span class="text-xl font-bold text-gray-900">850,00 €</span>
+                        </div>
+                        <button class="ticket-button add-to-cart bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10 text-center">
+                <a href="evenements.html#us-open" class="text-smash-purple hover:underline">En savoir plus sur l'US Open</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panier Flottant -->
+    <div class="fixed bottom-0 right-0 mb-8 mr-8 z-50">
+        <div class="bg-white rounded-full shadow-xl p-4 relative">
+            <span id="cart-counter" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">0</span>
+            <a href="cart.html" class="text-gray-800 text-2xl focus:outline-none">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Questions fréquentes sur la billetterie</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Comment se déroule la livraison des billets ?</h3>
+                    <p class="text-gray-700">Nos billets 100% FICTIFS sont émis sous format électronique (e-tickets imaginaires) et vous sont envoyés par email après votre "achat" fantaisiste. Vous pouvez faire semblant de les imprimer ou prétendre les présenter sur votre smartphone à l'entrée d'un stade qui n'existe pas dans notre univers. Si vous choisissez d'imprimer ces billets parfaitement inexistants, n'oubliez pas d'utiliser une imprimante tout aussi fictive ! Nos e-tickets imaginaires sont théoriquement résistants à la pluie, la bière renversée et aux larmes de joie quand votre joueur préféré gagne... mais vous ne le saurez jamais puisque SMASH ne vend aucun vrai billet et que ce site est purement démonstratif. Rappel important : aucune transaction réelle n'est possible ici, nos billets sont aussi authentiques que la raquette de tennis d'un poisson rouge !</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Est-il possible de changer ou d'annuler ma réservation ?</h3>
+                    <p class="text-gray-700">Nos billets 100% FICTIFS ne sont ni échangeables, ni remboursables car... eh bien, ils n'existent pas ! À moins que vous ne possédiez une machine à remonter le temps pour défaire votre "achat imaginaire" ou des pouvoirs de persuasion dignes d'un champion de Grand Chelem capable de convaincre des pixels, votre transaction fantaisiste est définitivement fictive. Nous vous conseillons vivement de souscrire à notre assurance annulation optionnelle tout aussi imaginaire - c'est un peu comme avoir un filet de sécurité pour attraper des rêves ! RAPPEL IMPORTANT : SMASH ne vend que des billets fictifs dans le cadre de ce site web démonstratif et aucune transaction réelle n'est possible ici.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Les places sont-elles numérotées ?</h3>
+                    <p class="text-gray-700">Oui, nos places 100% FICTIVES sur les courts principaux sont soigneusement numérotées avec des chiffres aussi imaginaires que nos billets ! À moins que vous ne soyez un ninja capable de vous téléporter vers un tournoi où votre billet fantaisiste serait accepté, merci de respecter votre siège attribué... dans votre imagination ! Pour les courts annexes imaginaires, le placement est généralement libre, dans un style "premier arrivé, premier servi" - comme une ruée vers l'or tennistique qui n'existe pas. L'accès aux courts est "contrôlé" par notre système fictif FortiNAC qui assure une gestion optimale des flux de spectateurs imaginaires et qui, selon la rumeur, peut aussi deviner quel joueur vous supportez secrètement. Rappel : tous nos billets sont complètement FICTIFS et ce site est purement démonstratif !</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Y a-t-il des réductions pour les enfants ou les groupes ?</h3>
+                    <p class="text-gray-700">Des tarifs 100% FICTIFS réduits sont disponibles pour les enfants imaginaires de moins de 12 ans sur certaines sessions (tant qu'ils promettent de ne pas hurler "Allez Papa !" pendant les points importants qui n'existeront jamais). Pour les groupes de plus de 10 personnes fantasmagoriques, nous offrons des réductions spéciales tout aussi fantaisistes - après tout, plus on est de fous, plus les joueurs fictifs se demandent pourquoi cette section fait autant de bruit ! Contactez notre service client imaginaire pour un devis personnalisé totalement bidon, et n'oubliez pas de mentionner si votre groupe prévoit une chorégraphie synchronisée pour la kiss-cam qui n'arrivera jamais. RAPPEL IMPORTANT : Tous nos billets sont complètement FICTIFS et AUCUNE transaction réelle n'est possible sur ce site démonstratif !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-cover bg-center relative" style="background-image: url('https://placehold.co/1920x600/333333/ffffff?text=Package+VIP')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Une expérience VIP inoubliable</h2>
+            <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Découvrez nos packages VIP exclusifs pour vivre les tournois du Grand Chelem dans des conditions exceptionnelles. Accès privilégié, hospitalité haut de gamme et souvenirs inoubliables.</p>
+            <a href="contact.html" class="inline-block bg-white text-gray-900 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-300">Demander un devis personnalisé</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-smash-green text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        SMASH
+                    </h3>
+                    <p class="text-gray-200">Votre faux partenaire officiel pour tous les tournois du Grand Chelem.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tournois</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
+                        <li><a href="#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
+                        <li><a href="#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
+                        <li><a href="#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <address class="not-italic text-gray-200">
+                        <p>123 Avenue du Tennis</p>
+                        <p>75016 Paris, France</p>
+                        <p class="mt-2">+33 1 23 45 67 89</p>
+                        <p>contact@smash.show</p>
+                    </address>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-200 my-8">
+            <div class="text-center text-gray-300">
+                <p>&copy; 2025 SMASH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Script spécifique à la page de billets
+        document.addEventListener('DOMContentLoaded', function() {
+            // Vérifier et initialiser le panier avec validation
+            let cart;
+            try {
+                const cartData = localStorage.getItem('smashCart');
+                console.log("Données brutes du panier:", cartData);
+                
+                if (cartData && cartData !== 'null' && cartData !== 'undefined') {
+                    cart = JSON.parse(cartData);
+                    if (!Array.isArray(cart)) {
+                        console.error("Le panier n'est pas un tableau:", cart);
+                        cart = [];
+                        localStorage.setItem('smashCart', JSON.stringify(cart));
+                    }
+                } else {
+                    cart = [];
+                    localStorage.setItem('smashCart', JSON.stringify(cart));
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération du panier:", error);
+                cart = [];
+                localStorage.setItem('smashCart', JSON.stringify(cart));
+            }
+            
+            const cartCounter = document.getElementById('cart-counter');
+            
+            // Mettre à jour le compteur de panier
+            function updateCartCounter() {
+                let totalItems = 0;
+                if (Array.isArray(cart)) {
+                    cart.forEach(item => {
+                        totalItems += item.quantity || 0;
+                    });
+                }
+                cartCounter.textContent = totalItems;
+            }
+            
+            // Mettre à jour le compteur initial
+            updateCartCounter();
+            
+            // Gérer l'ajout au panier - CORRECTION DU SÉLECTEUR DE PRIX
+            const addToCartButtons = document.querySelectorAll('.add-to-cart');
+            
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Récupérer les détails du produit
+                    const productCard = this.closest('.ticket-card');
+                    
+                    // Récupérer les informations du billet
+                    const name = productCard.querySelector('h3').textContent;
+                    const tournamentSection = productCard.closest('section');
+                    const tournament = tournamentSection.querySelector('h2').textContent;
+                    const date = productCard.querySelector('.text-sm.text-gray-600').textContent;
+                    
+                    // CORRECTION: Le sélecteur pour le prix n'était pas assez précis
+                    const priceElement = productCard.querySelector('.ticket-date-price .text-xl.font-bold');
+                    console.log("Élément de prix trouvé:", priceElement);
+                    
+                    let priceText = priceElement ? priceElement.textContent.trim() : '0,00 €';
+                    console.log("Texte du prix brut:", priceText);
+                    
+                    // Nettoyer et convertir le prix correctement
+                    priceText = priceText.replace(/\s+/g, '').replace('€', '').replace(',', '.');
+                    console.log("Texte du prix nettoyé:", priceText);
+                    
+                    const price = parseFloat(priceText);
+                    console.log("Prix final converti:", price);
+                    
+                    // Vérifier si le produit est déjà dans le panier
+                    const existingItemIndex = cart.findIndex(item => 
+                        item.name === name && item.tournament === tournament && item.date === date
+                    );
+                    
+                    if (existingItemIndex !== -1) {
+                        // Si l'article existe déjà, augmenter la quantité
+                        cart[existingItemIndex].quantity++;
+                    } else {
+                        // Sinon, ajouter un nouvel article
+                        cart.push({
+                            name,
+                            tournament,
+                            date,
+                            price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    // Sauvegarder le panier dans localStorage avec validation
+                    try {
+                        localStorage.setItem('smashCart', JSON.stringify(cart));
+                        console.log("Panier mis à jour:", cart);
+                    } catch (error) {
+                        console.error("Erreur lors de la mise à jour du panier:", error);
+                        alert("Une erreur est survenue lors de l'ajout au panier. Veuillez réessayer.");
+                    }
+                    
+                    // Mettre à jour le compteur
+                    updateCartCounter();
+                    
+                    // Feedback visuel
+                    const originalText = button.textContent;
+                    button.textContent = 'Ajouté !';
+                    button.disabled = true;
+                    
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                        button.disabled = false;
+                    }, 1500);
+                });
+            });
+            
+            // Filtrage des billets (simulation)
+            const filterForm = document.querySelector('form');
+            filterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const tournament = document.getElementById('tournament').value;
+                
+                // Si un tournoi est sélectionné, on scrolle jusqu'à sa section
+                if (tournament) {
+                    const section = document.getElementById(tournament);
+                    if (section) {
+                        section.scrollIntoView({behavior: 'smooth'});
+                    }
+                }
+                
+                // Simulation de filtrage
+                alert('Filtres appliqués avec succès !');
+            });
+        });
+    </script>
+</body>
+</html>

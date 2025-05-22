@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traitement du paiement | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <div class="flex items-center justify-between mb-8">
+                <h1 class="text-2xl font-bold">Confirmation du paiement</h1>
+                <a href="../../index.html" class="text-smash-green hover:underline">
+                    <span class="text-smash-blue">S</span><span class="text-smash-clay">M</span><span class="text-smash-green">A</span><span class="text-smash-purple">S</span><span class="text-smash-blue">H</span>
+                </a>
+            </div>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-green-700">
+                            Votre paiement a été traité avec succès. Veuillez consulter le résumé de votre transaction ci-dessous.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Détails de la transaction -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Détails de la transaction</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-600">Numéro de commande</p>
+                        <p class="font-medium" id="order-number">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Date</p>
+                        <p class="font-medium" id="order-date">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Montant total</p>
+                        <p class="font-medium" id="order-amount">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Méthode de paiement</p>
+                        <p class="font-medium" id="payment-method">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Statut</p>
+                        <p class="font-medium text-green-600">Approuvé</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informations client -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Informations client</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-600">Nom</p>
+                        <p class="font-medium" id="customer-name">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Email</p>
+                        <p class="font-medium" id="customer-email">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Détails techniques (simulations d'API) -->
+            <div class="mb-8 border rounded-md p-4 bg-gray-50">
+                <h2 class="text-xl font-semibold mb-2">Détails techniques (Simulation d'API)</h2>
+                <p class="text-sm text-gray-600 mb-2">Cette page simule une réponse d'API après traitement du paiement. Données traitées :</p>
+                <div class="bg-gray-900 text-green-400 p-3 rounded text-xs font-mono overflow-x-auto">
+                    <pre id="api-response">Chargement des données...</pre>
+                </div>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="flex justify-center">
+                <a href="../../index.html" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Retour à l'accueil <i class="fas fa-home ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simuler la réception des paramètres POST
+            function getFormDataFromUrl() {
+                // Dans une application réelle, ces données viendraient de req.body
+                const paymentMethods = ['credit-card', 'paypal'];
+                const randomMethod = paymentMethods[Math.floor(Math.random() * paymentMethods.length)];
+                
+                return {
+                    cart_id: 'cart_' + Date.now(),
+                    step: 'payment',
+                    customer_id: 'cust_' + Math.random().toString(36).substr(2, 9),
+                    payment_method: randomMethod,
+                    card_number: randomMethod === 'credit-card' ? '4242XXXXXXXX4242' : '',
+                    expiry_date: randomMethod === 'credit-card' ? '12/25' : '',
+                    cvv: randomMethod === 'credit-card' ? 'XXX' : '',
+                    terms: 'on'
+                };
+            }
+            
+            // Fonction pour formater un prix
+            function formatPrice(price) {
+                return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(price);
+            }
+            
+            // Générer un numéro de commande aléatoire
+            function getRandomOrderNumber() {
+                const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                const randomLetters = letters.charAt(Math.floor(Math.random() * letters.length)) + 
+                                    letters.charAt(Math.floor(Math.random() * letters.length));
+                const randomNumber = Math.floor(Math.random() * 900000) + 100000;
+                return `SMH-${randomLetters}${randomNumber}`;
+            }
+            
+            // Récupérer date actuelle
+            function getCurrentDate() {
+                const now = new Date();
+                return now.toLocaleDateString('fr-FR');
+            }
+            
+            // Récupérer les données simulées
+            const formData = getFormDataFromUrl();
+            const orderNumber = getRandomOrderNumber();
+            const orderDate = getCurrentDate();
+            
+            // Récupérer les informations client (stockées dans localStorage)
+            const customerFirstName = localStorage.getItem('customer_firstname') || 'Jean';
+            const customerLastName = localStorage.getItem('customer_lastname') || 'Dupont';
+            const customerEmail = localStorage.getItem('customer_email') || 'jean.dupont@exemple.com';
+            
+            // Récupérer le total (simulé)
+            // Dans une vraie application, cela viendrait de la base de données
+            const cart = JSON.parse(localStorage.getItem('smashCart')) || [];
+            let subtotal = 0;
+            cart.forEach(item => {
+                subtotal += item.price * item.quantity;
+            });
+            const serviceFee = subtotal * 0.05;
+            const total = subtotal + serviceFee;
+            
+            // Afficher les informations de la transaction
+            document.getElementById('order-number').textContent = orderNumber;
+            document.getElementById('order-date').textContent = orderDate;
+            document.getElementById('order-amount').textContent = formatPrice(total);
+            document.getElementById('payment-method').textContent = formData.payment_method === 'credit-card' ? 
+                'Carte de crédit' : 'PayPal';
+            
+            // Afficher les informations client
+            document.getElementById('customer-name').textContent = `${customerFirstName} ${customerLastName}`;
+            document.getElementById('customer-email').textContent = customerEmail;
+            
+            // Vider le panier après confirmation
+            localStorage.setItem('smashCart', JSON.stringify([]));
+            
+            // Afficher les données techniques
+            document.getElementById('api-response').textContent = JSON.stringify(
+                {
+                    request: {
+                        method: 'POST',
+                        endpoint: '/api/checkout/payment',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRF-Token': 'simulated-token'
+                        },
+                        body: formData
+                    },
+                    response: {
+                        status: 200,
+                        message: 'Payment processed successfully',
+                        transaction: {
+                            id: 'txn_' + Math.random().toString(36).substr(2, 9),
+                            order_number: orderNumber,
+                            amount: total,
+                            currency: 'EUR',
+                            date: orderDate,
+                            payment_method: formData.payment_method,
+                            status: 'approved'
+                        },
+                        customer: {
+                            id: formData.customer_id,
+                            name: `${customerFirstName} ${customerLastName}`,
+                            email: customerEmail
+                        },
+                        receipt_url: '../../pages/cart.html#confirmation'
+                    }
+                }, 
+                null, 
+                2
+            );
+        });
+    </script>
+</body>
+</html>

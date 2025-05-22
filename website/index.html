@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMASH - Tournois du Grand Chelem</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="images/logos/logo.png" alt="SMASH" class="h-14">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="pages/evenements.html" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
+                    <a href="pages/boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition">Billets</a>
+                    <a href="pages/boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
+                    <a href="pages/a-propos.html" class="text-gray-800 hover:text-smash-green transition">À propos</a>
+                    <a href="pages/contact.html" class="text-gray-800 hover:text-smash-green transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="pages/evenements.html" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
+                <a href="pages/boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
+                <a href="pages/boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
+                <a href="pages/a-propos.html" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
+                <a href="pages/contact.html" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-screen" style="background-image: url('./images/headers/index-header.png')">
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="container mx-auto px-4 h-full flex items-center relative z-10">
+            <div class="text-white max-w-2xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Les plus grands tournois de tennis au même endroit</h1>
+                <p class="text-xl mb-8">Billets, merchandising et toute l'actualité des tournois du Grand Chelem</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="pages/boutique-tickets.html" class="bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 text-center">Réserver des billets</a>
+                    <a href="pages/boutique-goodies.html" class="bg-white hover:bg-gray-100 text-smash-green font-bold py-3 px-6 rounded-lg transition duration-300 text-center">Boutique officielle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tournaments Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Les Tournois du Grand Chelem</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Australian Open -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/0077B6/ffffff?text=Australian+Open')"></div>
+                    <div class="p-6 border-t-4 border-smash-blue">
+                        <h3 class="text-xl font-bold mb-2">Open d'Australie</h3>
+                        <p class="text-gray-600 mb-4">Melbourne | Janvier</p>
+                        <p class="text-gray-700 mb-4">Le premier Grand Chelem de l'année sur surface dure.</p>
+                        <a href="pages/evenements.html#australian-open" class="text-smash-blue hover:underline">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Roland Garros -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/D13C32/ffffff?text=Roland+Garros')"></div>
+                    <div class="p-6 border-t-4 border-smash-clay">
+                        <h3 class="text-xl font-bold mb-2">Roland Garros</h3>
+                        <p class="text-gray-600 mb-4">Paris | Mai-Juin</p>
+                        <p class="text-gray-700 mb-4">L'unique Grand Chelem sur terre battue.</p>
+                        <a href="pages/evenements.html#roland-garros" class="text-smash-clay hover:underline">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- Wimbledon -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/007F5F/ffffff?text=Wimbledon')"></div>
+                    <div class="p-6 border-t-4 border-smash-green">
+                        <h3 class="text-xl font-bold mb-2">Wimbledon</h3>
+                        <p class="text-gray-600 mb-4">Londres | Juin-Juillet</p>
+                        <p class="text-gray-700 mb-4">Le plus ancien et prestigieux tournoi sur gazon.</p>
+                        <a href="pages/evenements.html#wimbledon" class="text-smash-green hover:underline">En savoir plus</a>
+                    </div>
+                </div>
+                
+                <!-- US Open -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-48 bg-cover bg-center" style="background-image: url('https://placehold.co/600x400/563D7C/ffffff?text=US+Open')"></div>
+                    <div class="p-6 border-t-4 border-smash-purple">
+                        <h3 class="text-xl font-bold mb-2">US Open</h3>
+                        <p class="text-gray-600 mb-4">New York | Août-Septembre</p>
+                        <p class="text-gray-700 mb-4">Le dernier Grand Chelem de l'année sur surface dure.</p>
+                        <a href="pages/evenements.html#us-open" class="text-smash-purple hover:underline">En savoir plus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tickets Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                    <h2 class="text-3xl font-bold mb-6">Réservez vos billets</h2>
+                    <p class="text-gray-700 mb-8">Vivez l'expérience des plus grands tournois de tennis en direct. Réservez vos places dès maintenant pour assister aux matchs des meilleurs joueurs mondiaux dans les stades les plus emblématiques.</p>
+                    <a href="pages/boutique-tickets.html" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">Voir les billets disponibles</a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="./images/tickets/ticket.png" alt="Billets Grand Chelem" class="rounded-lg shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Notre boutique officielle</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/f8f9fa/343a40?text=T-shirt+SMASH')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">T-shirt officiel SMASH</h3>
+                        <p class="text-gray-600 mb-2">69,99 €</p>
+                        <p class="text-gray-700 mb-4">T-shirt officiel du tournoi avec le logo emblématique.</p>
+                        <a href="pages/boutique-goodies.html" class="inline-block bg-smash-clay hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition duration-300">Voir le produit</a>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/f8f9fa/343a40?text=Serviette+SMASH')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Serviette SMASH</h3>
+                        <p class="text-gray-600 mb-2">45,00 €</p>
+                        <p class="text-gray-700 mb-4">Serviette officielle utilisée par les joueurs pour s'essuyer.</p>
+                        <a href="pages/boutique-goodies.html" class="inline-block bg-smash-green hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition duration-300">Voir le produit</a>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/f8f9fa/343a40?text=Casquette+SMASH')"></div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Casquette SMASH</h3>
+                        <p class="text-gray-600 mb-2">35,50 €</p>
+                        <p class="text-gray-700 mb-4">Casquette ajustable avec le logo SMASH.</p>
+                        <a href="pages/boutique-goodies.html" class="inline-block bg-smash-purple hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300">Voir le produit</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-10">
+                <a href="pages/boutique-goodies.html" class="inline-block bg-gray-800 hover:bg-black text-white font-bold py-3 px-6 rounded-lg transition duration-300">Voir tous les produits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-smash-blue text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Restez informé</h2>
+            <p class="text-lg mb-8 max-w-2xl mx-auto">Inscrivez-vous à notre newsletter pour recevoir les dernières actualités des tournois et être informé des mises en vente de billets.</p>
+            <form class="max-w-md mx-auto flex flex-col sm:flex-row">
+                <input type="email" placeholder="Votre adresse email" class="flex-grow py-3 px-4 mb-3 sm:mb-0 sm:mr-2 rounded-lg focus:outline-none text-gray-900">
+                <button type="submit" class="bg-white text-smash-blue font-bold py-3 px-6 rounded-lg hover:bg-gray-200 transition duration-300">S'inscrire</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-smash-green text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        SMASH
+                    </h3>
+                    <p class="text-gray-200">Votre faux partenaire officiel pour tous les tournois du Grand Chelem.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="pages/evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="pages/boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="pages/boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="pages/contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tournois</h4>
+                    <ul class="space-y-2">
+                        <li><a href="pages/evenements.html#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
+                        <li><a href="pages/evenements.html#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
+                        <li><a href="pages/evenements.html#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
+                        <li><a href="pages/evenements.html#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <address class="not-italic text-gray-200">
+                        <p>123 Avenue du Tennis</p>
+                        <p>75016 Paris, France</p>
+                        <p class="mt-2">+33 1 23 45 67 89</p>
+                        <p>contact@smash.show</p>
+                    </address>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-200 my-8">
+            <div class="text-center text-gray-300">
+                <p>&copy; 2025 SMASH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

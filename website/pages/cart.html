@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panier | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../images/logos/logo.png" alt="SMASH" class="h-14">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="../index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
+                    <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition">Billets</a>
+                    <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
+                    <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition">À propos</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-smash-green transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="../index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
+                <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
+                <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
+                <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
+                <a href="contact.html" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-20" style="background-image: url('https://placehold.co/1920x400/111827/ffffff?text=Votre+Panier')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-white text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Votre Panier</h1>
+                <p class="text-xl max-w-3xl mx-auto">Finalisez votre commande imaginaire en quelques étapes simples.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Multi-step Checkout Process -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <!-- Progress Steps - STYLE HARMONISÉ AVEC LES BOUTONS -->
+            <div class="mb-10">
+                <div class="max-w-4xl mx-auto flex justify-center">
+                    <div class="flex">
+                        <!-- Étape 1: Panier -->
+                        <div id="step-1-indicator" class="relative">
+                            <div class="h-12 bg-smash-green text-white flex items-center px-6 rounded-l-lg font-bold">
+                                <i class="fas fa-shopping-cart mr-2"></i>
+                                <span class="text-sm">Panier</span>
+                            </div>
+                            <div class="absolute top-0 right-0 h-0 w-0 border-l-[24px] border-l-smash-green border-t-[24px] border-t-transparent border-b-[24px] border-b-transparent" style="right: -24px; z-index: 10;"></div>
+                        </div>
+                        
+                        <!-- Étape 2 -->
+                        <div id="step-2-indicator" class="relative ml-6">
+                            <div class="h-12 bg-gray-400 hover:bg-gray-500 text-white flex items-center px-6 font-bold transition duration-300">
+                                <i class="fas fa-user mr-2"></i>
+                                <span class="text-sm">Informations</span>
+                            </div>
+                            <div class="absolute top-0 right-0 h-0 w-0 border-l-[24px] border-l-gray-400 border-t-[24px] border-t-transparent border-b-[24px] border-b-transparent" style="right: -24px; z-index: 10;"></div>
+                        </div>
+                        
+                        <!-- Étape 3 -->
+                        <div id="step-3-indicator" class="relative ml-6">
+                            <div class="h-12 bg-gray-400 hover:bg-gray-500 text-white flex items-center px-6 font-bold transition duration-300">
+                                <i class="fas fa-credit-card mr-2"></i>
+                                <span class="text-sm">Paiement</span>
+                            </div>
+                            <div class="absolute top-0 right-0 h-0 w-0 border-l-[24px] border-l-gray-400 border-t-[24px] border-t-transparent border-b-[24px] border-b-transparent" style="right: -24px; z-index: 10;"></div>
+                        </div>
+                        
+                        <!-- Étape 4 -->
+                        <div id="step-4-indicator" class="relative ml-6">
+                            <div class="h-12 bg-gray-400 hover:bg-gray-500 text-white flex items-center px-6 rounded-r-lg font-bold transition duration-300">
+                                <i class="fas fa-check mr-2"></i>
+                                <span class="text-sm">Confirmation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Checkout Forms Container -->
+            <div class="max-w-5xl mx-auto">
+                <!-- Step 1: Cart Overview -->
+                <div id="step-1" class="checkout-step active">
+                    <h2 class="text-2xl font-bold mb-8">Récapitulatif de votre faux panier</h2>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full mb-6">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="px-4 py-3 text-left">Produit</th>
+                                    <th class="px-4 py-3 text-left">Tournoi</th>
+                                    <th class="px-4 py-3 text-center">Prix unitaire</th>
+                                    <th class="px-4 py-3 text-center">Quantité</th>
+                                    <th class="px-4 py-3 text-right">Total</th>
+                                    <th class="px-4 py-3 text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="cart-items">
+                                <!-- Les éléments du panier seront ajoutés ici dynamiquement -->
+                                <tr id="empty-cart-message">
+                                    <td colspan="6" class="py-8 text-center text-gray-500 italic">
+                                        Votre panier est vide. <a href="boutique-tickets.html" class="text-smash-blue hover:underline">Consultez nos billets disponibles</a>.
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot class="border-t">
+                                <tr>
+                                    <td colspan="4" class="px-4 py-4 text-right font-bold">Sous-total :</td>
+                                    <td id="subtotal" class="px-4 py-4 text-right font-bold">0,00 €</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" class="px-4 py-2 text-right">Frais de service (5%) :</td>
+                                    <td id="service-fee" class="px-4 py-2 text-right">0,00 €</td>
+                                    <td></td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td colspan="4" class="px-4 py-4 text-right font-bold text-lg">Total :</td>
+                                    <td id="total" class="px-4 py-4 text-right font-bold text-lg">0,00 €</td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    
+                    <div class="flex justify-between mt-8">
+                        <a href="boutique-tickets.html" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300">
+                            <i class="fas fa-arrow-left mr-2"></i> Continuer mes achats
+                        </a>
+                        <button id="to-step-2" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                            Continuer <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Customer Information -->
+                <div id="step-2" class="checkout-step hidden">
+                    <h2 class="text-2xl font-bold mb-8">Vos informations</h2>
+                    
+                    <form id="customer-info-form" method="post" action="../api/checkout/customer-info.html" class="space-y-6">
+                        <input type="hidden" name="cart_id" id="cart_id" value="">
+                        <input type="hidden" name="step" value="customer-info">
+                        
+                        <!-- Debug panel pour voir les données qui seraient envoyées -->
+                        <div id="debug-panel-step2" class="mb-6 p-4 bg-gray-100 rounded-lg hidden">
+                            <h3 class="font-bold mb-2">Simulation de requête POST</h3>
+                            <pre id="debug-data-step2" class="text-xs bg-gray-800 text-green-400 p-3 rounded overflow-auto max-h-36"></pre>
+                            <div class="mt-2 text-sm text-gray-600 italic">Ces données seraient normalement envoyées au serveur via une requête POST</div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstname" class="block text-sm font-medium text-gray-700 mb-1">Prénom <span class="text-red-500">*</span></label>
+                                <input type="text" id="firstname" name="firstname" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="lastname" class="block text-sm font-medium text-gray-700 mb-1">Nom <span class="text-red-500">*</span></label>
+                                <input type="text" id="lastname" name="lastname" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Téléphone <span class="text-red-500">*</span></label>
+                                <input type="tel" id="phone" name="phone" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Adresse <span class="text-red-500">*</span></label>
+                            <input type="text" id="address" name="address" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                                <label for="postal_code" class="block text-sm font-medium text-gray-700 mb-1">Code postal <span class="text-red-500">*</span></label>
+                                <input type="text" id="postal_code" name="postal_code" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Ville <span class="text-red-500">*</span></label>
+                                <input type="text" id="city" name="city" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="country" class="block text-sm font-medium text-gray-700 mb-1">Pays <span class="text-red-500">*</span></label>
+                            <select id="country" name="country" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                                <option value="">Sélectionnez un pays</option>
+                                <option value="FR">France</option>
+                                <option value="BE">Belgique</option>
+                                <option value="CH">Suisse</option>
+                                <option value="LU">Luxembourg</option>
+                                <option value="MC">Monaco</option>
+                                <option value="CA">Canada</option>
+                                <option value="US">États-Unis</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="newsletter" name="newsletter" type="checkbox" class="h-4 w-4 text-smash-green focus:ring-smash-green border-gray-300 rounded">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="newsletter" class="font-medium text-gray-700">Je souhaite recevoir les dernières actualités sur les tournois du Grand Chelem</label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="flex justify-between mt-8">
+                        <button id="back-to-step-1" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300">
+                            <i class="fas fa-arrow-left mr-2"></i> Retour
+                        </button>
+                        <button id="to-step-3" type="submit" form="customer-info-form" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                            Continuer <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Payment -->
+                <div id="step-3" class="checkout-step hidden">
+                    <h2 class="text-2xl font-bold mb-8">Paiement</h2>
+                    
+                    <form id="payment-form" method="post" action="../api/checkout/payment.html" class="space-y-6">
+                        <input type="hidden" name="cart_id" id="payment_cart_id" value="">
+                        <input type="hidden" name="step" value="payment">
+                        <input type="hidden" name="customer_id" id="customer_id" value="">
+                        
+                        <!-- Debug panel pour voir les données qui seraient envoyées -->
+                        <div id="debug-panel-step3" class="mb-6 p-4 bg-gray-100 rounded-lg hidden">
+                            <h3 class="font-bold mb-2">Simulation de requête POST</h3>
+                            <pre id="debug-data-step3" class="text-xs bg-gray-800 text-green-400 p-3 rounded overflow-auto max-h-36"></pre>
+                            <div class="mt-2 text-sm text-gray-600 italic">Ces données seraient normalement envoyées au serveur via une requête POST</div>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg mb-6">
+                            <h3 class="text-lg font-bold mb-4">Méthode de paiement</h3>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <input type="radio" id="credit-card" name="payment_method" value="credit-card" checked class="h-4 w-4 text-smash-green focus:ring-smash-green border-gray-300">
+                                    <label for="credit-card" class="ml-3 font-medium text-gray-700 flex items-center">
+                                        <span>Carte de crédit</span>
+                                        <div class="ml-4 flex space-x-2">
+                                            <i class="fab fa-cc-visa text-2xl text-blue-800"></i>
+                                            <i class="fab fa-cc-mastercard text-2xl text-red-600"></i>
+                                            <i class="fab fa-cc-amex text-2xl text-blue-600"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                <div class="flex items-center">
+                                    <input type="radio" id="paypal" name="payment_method" value="paypal" class="h-4 w-4 text-smash-green focus:ring-smash-green border-gray-300">
+                                    <label for="paypal" class="ml-3 font-medium text-gray-700 flex items-center">
+                                        <span>PayPal</span>
+                                        <i class="fab fa-paypal ml-4 text-2xl text-blue-600"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="credit-card-fields">
+                            <div>
+                                <label for="card_number" class="block text-sm font-medium text-gray-700 mb-1">Numéro de carte <span class="text-red-500">*</span></label>
+                                <input type="text" id="card_number" name="card_number" placeholder="1234 5678 9012 3456" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                                <div>
+                                    <label for="card_name" class="block text-sm font-medium text-gray-700 mb-1">Nom sur la carte <span class="text-red-500">*</span></label>
+                                    <input type="text" id="card_name" name="card_name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="expiry_date" class="block text-sm font-medium text-gray-700 mb-1">Date d'expiration <span class="text-red-500">*</span></label>
+                                        <input type="text" id="expiry_date" name="expiry_date" placeholder="MM/AA" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                                    </div>
+                                    <div>
+                                        <label for="cvv" class="block text-sm font-medium text-gray-700 mb-1">CVV <span class="text-red-500">*</span></label>
+                                        <input type="text" id="cvv" name="cvv" placeholder="123" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="order-summary" class="bg-gray-50 p-6 rounded-lg mt-8">
+                            <h3 class="text-lg font-bold mb-4">Récapitulatif de la commande</h3>
+                            <div class="space-y-2 mb-4">
+                                <div class="flex justify-between">
+                                    <span>Sous-total :</span>
+                                    <span id="summary-subtotal">0,00 €</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Frais de service (5%) :</span>
+                                    <span id="summary-service-fee">0,00 €</span>
+                                </div>
+                                <div class="border-t pt-2 mt-2 flex justify-between font-bold">
+                                    <span>Total :</span>
+                                    <span id="summary-total">0,00 €</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start mt-6">
+                                <div class="flex items-center h-5">
+                                    <input id="terms" name="terms" type="checkbox" required class="h-4 w-4 text-smash-green focus:ring-smash-green border-gray-300 rounded">
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="terms" class="font-medium text-gray-700">J'accepte les <a href="#" class="text-smash-blue hover:underline">conditions générales de vente</a> et la <a href="#" class="text-smash-blue hover:underline">politique de confidentialité</a></label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <div class="flex justify-between mt-8">
+                        <button id="back-to-step-2" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300">
+                            <i class="fas fa-arrow-left mr-2"></i> Retour
+                        </button>
+                        <button id="complete-order" type="submit" form="payment-form" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                            Confirmer et payer <i class="fas fa-check ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirmation -->
+                <div id="step-4" class="checkout-step hidden">
+                    <div class="text-center py-8">
+                        <div class="bg-green-100 text-green-800 p-6 rounded-lg inline-block mb-6">
+                            <i class="fas fa-check-circle text-6xl"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-4">Merci pour votre commande !</h2>
+                        <p class="text-xl text-gray-600 mb-8">Votre commande a été confirmée et vos billets vous seront envoyés par email.</p>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg mx-auto max-w-md text-left mb-8">
+                            <h3 class="text-lg font-bold mb-2">Récapitulatif de la commande :</h3>
+                            <p><strong>Numéro de commande :</strong> <span id="order-number">SMH-12345</span></p>
+                            <p><strong>Date :</strong> <span id="order-date">01/01/2024</span></p>
+                            <p><strong>Total :</strong> <span id="order-total">0,00 €</span></p>
+                            <p><strong>Email :</strong> <span id="order-email">exemple@email.com</span></p>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <p class="text-gray-600">Un email de confirmation vous a été envoyé avec tous les détails de votre commande.</p>
+                            <p class="text-gray-600">N'hésitez pas à nous contacter si vous avez des questions concernant votre commande.</p>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="../index.html" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                Retour à l'accueil
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Debug panel pour voir la réponse simulée du serveur -->
+                    <div id="debug-panel-step4" class="mt-8 p-4 bg-gray-100 rounded-lg max-w-3xl mx-auto hidden">
+                        <h3 class="font-bold mb-2 text-left">Simulation de réponse du serveur</h3>
+                        <pre id="debug-data-step4" class="text-xs bg-gray-800 text-green-400 p-3 rounded overflow-auto max-h-36 text-left"></pre>
+                        <div class="mt-2 text-sm text-gray-600 italic text-left">Ceci simule la réponse du serveur après le traitement du paiement</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-smash-green text-white py-12 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        SMASH
+                    </h3>
+                    <p class="text-gray-200">Votre faux partenaire officiel pour tous les tournois du Grand Chelem.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tournois</h4>
+                    <ul class="space-y-2">
+                        <li><a href="evenements.html#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
+                        <li><a href="evenements.html#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
+                        <li><a href="evenements.html#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
+                        <li><a href="evenements.html#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <address class="not-italic text-gray-200">
+                        <p>123 Avenue du Tennis</p>
+                        <p>75016 Paris, France</p>
+                        <p class="mt-2">+33 1 23 45 67 89</p>
+                        <p>contact@smash.show</p>
+                    </address>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-200 my-8">
+            <div class="text-center text-gray-300">
+                <p>&copy; 2025 SMASH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Script spécifique à la page panier
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fonction pour récupérer un paramètre d'URL
+            function getQueryParam(name) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(name);
+            }
+            
+            // Vérifier si le mode debug est activé
+            const debugMode = getQueryParam('debug') === 'true';
+            
+            // Créer la bannière de débogage seulement si le mode debug est activé
+            let debugDiv;
+            if (debugMode) {
+                debugDiv = document.createElement('div');
+                debugDiv.className = 'bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-4';
+                debugDiv.innerHTML = `
+                    <p class="font-bold">Débogage du panier:</p>
+                    <p id="cart-debug-info">Analyse du panier en cours...</p>
+                `;
+                document.querySelector('.container').prepend(debugDiv);
+                
+                // Ajouter un bouton pour réinitialiser le panier
+                const resetButton = document.createElement('button');
+                resetButton.className = 'mt-2 px-4 py-1 bg-red-500 text-white text-sm rounded hover:bg-red-600';
+                resetButton.textContent = 'Réinitialiser le panier';
+                resetButton.addEventListener('click', function() {
+                    localStorage.setItem('smashCart', JSON.stringify([]));
+                    location.reload();
+                });
+                debugDiv.appendChild(resetButton);
+            }
+            
+            // Récupérer les éléments du panier depuis le localStorage
+            let cart;
+            try {
+                const cartData = localStorage.getItem('smashCart');
+                console.log("Données brutes du panier:", cartData);
+                
+                if (debugMode && document.getElementById('cart-debug-info')) {
+                    document.getElementById('cart-debug-info').innerHTML += `<br>Données brutes: ${cartData || 'vide'}`;
+                }
+                
+                if (cartData && cartData !== 'null' && cartData !== 'undefined') {
+                    cart = JSON.parse(cartData);
+                    if (!Array.isArray(cart)) {
+                        console.error("Le panier n'est pas un tableau:", cart);
+                        if (debugMode && document.getElementById('cart-debug-info')) {
+                            document.getElementById('cart-debug-info').innerHTML += `<br>Erreur: Le panier n'est pas un tableau`;
+                        }
+                        cart = [];
+                    }
+                } else {
+                    cart = [];
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération du panier:", error);
+                if (debugMode && document.getElementById('cart-debug-info')) {
+                    document.getElementById('cart-debug-info').innerHTML += `<br>Erreur: ${error.message}`;
+                }
+                cart = [];
+                
+                // Réinitialiser le panier en cas d'erreur
+                localStorage.setItem('smashCart', JSON.stringify([]));
+            }
+            
+            if (debugMode && document.getElementById('cart-debug-info')) {
+                document.getElementById('cart-debug-info').innerHTML += `<br>Nombre d'articles dans le panier: ${cart.length}`;
+            }
+            
+            console.log("Contenu du panier:", cart);
+            
+            // Éléments du DOM
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            const subtotalElement = document.getElementById('subtotal');
+            const serviceFeeElement = document.getElementById('service-fee');
+            const totalElement = document.getElementById('total');
+            const continueButton = document.getElementById('to-step-2');
+            
+            // Éléments pour les étapes
+            const stepElements = {
+                1: document.getElementById('step-1'),
+                2: document.getElementById('step-2'),
+                3: document.getElementById('step-3'),
+                4: document.getElementById('step-4')
+            };
+            
+            const stepIndicators = {
+                1: document.getElementById('step-1-indicator'),
+                2: document.getElementById('step-2-indicator'),
+                3: document.getElementById('step-3-indicator'),
+                4: document.getElementById('step-4-indicator')
+            };
+            
+            const progressBar = document.getElementById('progress-bar');
+            
+            // Éléments pour le récapitulatif
+            const summarySubtotal = document.getElementById('summary-subtotal');
+            const summaryServiceFee = document.getElementById('summary-service-fee');
+            const summaryTotal = document.getElementById('summary-total');
+            
+            // Éléments pour la confirmation
+            const orderNumber = document.getElementById('order-number');
+            const orderDate = document.getElementById('order-date');
+            const orderTotal = document.getElementById('order-total');
+            const orderEmail = document.getElementById('order-email');
+            
+            // Fonctions utilitaires
+            function formatPrice(price) {
+                // Vérifier que le prix est bien un nombre valide
+                if (isNaN(price) || price === null || price === undefined) {
+                    console.warn("Prix invalide détecté:", price);
+                    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(0);
+                }
+                return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(price);
+            }
+            
+            function getRandomOrderNumber() {
+                const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                const randomLetters = letters.charAt(Math.floor(Math.random() * letters.length)) + 
+                                      letters.charAt(Math.floor(Math.random() * letters.length));
+                const randomNumber = Math.floor(Math.random() * 900000) + 100000;
+                return `SMH-${randomLetters}${randomNumber}`;
+            }
+            
+            function getCurrentDate() {
+                const now = new Date();
+                return now.toLocaleDateString('fr-FR');
+            }
+            
+            // Fonction pour afficher les éléments du panier
+            function renderCart() {
+                // Vérifier à nouveau le panier avant le rendu
+                console.log("Rendu du panier avec", cart.length, "articles:", cart);
+                
+                // Déboguer le contenu du panier
+                if (cart.length > 0) {
+                    console.log("Détails de chaque article:");
+                    cart.forEach((item, index) => {
+                        console.log(`Article ${index + 1}:`, item);
+                        console.log(`- Type de prix: ${typeof item.price}`);
+                        console.log(`- Valeur du prix: ${item.price}`);
+                    });
+                }
+                
+                // Mettre à jour le contenu du panier
+                if (!cart || !Array.isArray(cart) || cart.length === 0) {
+                    emptyCartMessage.classList.remove('hidden');
+                    continueButton.disabled = true;
+                } else {
+                    emptyCartMessage.classList.add('hidden');
+                    continueButton.disabled = false;
+                    
+                    // Vider le conteneur et reconstruire les éléments
+                    while (cartItemsContainer.firstChild) {
+                        if (cartItemsContainer.firstChild.id !== 'empty-cart-message') {
+                            cartItemsContainer.removeChild(cartItemsContainer.firstChild);
+                        } else {
+                            break;
+                        }
+                    }
+                    
+                    // Ajouter chaque élément du panier
+                    let subtotal = 0;
+                    
+                    cart.forEach((item, index) => {
+                        const row = document.createElement('tr');
+                        row.className = 'border-t';
+                        
+                        // CORRECTION COMPLÈTE DE LA GESTION DES PRIX
+                        let itemPrice = 0;
+                        
+                        if (item.price !== undefined && item.price !== null) {
+                            console.log(`Traitement du prix pour l'article ${index} (${item.name})`);
+                            
+                            // Tenter de convertir en nombre si ce n'est pas déjà un nombre
+                            if (typeof item.price === 'number') {
+                                if (isNaN(item.price) || item.price === 0) {
+                                    console.warn(`Prix numérique invalide détecté: ${item.price}, tentative de correction...`);
+                                    
+                                    // Tentative de récupération depuis originalPrice si disponible
+                                    if (item.originalPrice) {
+                                        itemPrice = parseFloat(String(item.originalPrice).replace('€', '').replace(',', '.').trim());
+                                        console.log(`Prix récupéré depuis originalPrice: ${itemPrice}`);
+                                    } else {
+                                        // Dernière tentative - vérifier si un prix est stocké dans le champ priceText pour les produits
+                                        if (item.priceText) {
+                                            itemPrice = parseFloat(String(item.priceText).replace('€', '').replace(',', '.').trim());
+                                            console.log(`Prix récupéré depuis priceText: ${itemPrice}`);
+                                        }
+                                    }
+                                } else {
+                                    itemPrice = item.price;
+                                    console.log(`Prix numérique valide: ${itemPrice}`);
+                                }
+                            } else {
+                                // Si le prix est une chaîne, la nettoyer et convertir
+                                let cleanPrice = String(item.price)
+                                    .replace(/\s+/g, '')
+                                    .replace('€', '')
+                                    .replace('EUR', '')
+                                    .replace(',', '.')
+                                    .trim();
+                                
+                                console.log(`Prix en chaîne nettoyée: "${cleanPrice}"`);
+                                
+                                itemPrice = parseFloat(cleanPrice);
+                                console.log(`Prix converti: ${itemPrice}`);
+                                
+                                // Vérifier si la conversion a réussi
+                                if (isNaN(itemPrice)) {
+                                    console.error(`Prix invalide pour ${item.name}:`, item.price);
+                                    // Chercher des alternatives
+                                    if (item.priceText) {
+                                        const cleanPriceText = String(item.priceText).replace('€', '').replace(',', '.').trim();
+                                        itemPrice = parseFloat(cleanPriceText);
+                                        console.log(`Prix alternatif depuis priceText: ${itemPrice}`);
+                                    }
+                                }
+                            }
+                        } else {
+                            console.warn(`Prix non défini pour l'article ${item.name}, vérification des alternatives`);
+                            // Tenter de récupérer depuis originalPrice ou priceText
+                            if (item.originalPrice) {
+                                itemPrice = parseFloat(String(item.originalPrice).replace('€', '').replace(',', '.').trim());
+                                console.log(`Prix récupéré depuis originalPrice: ${itemPrice}`);
+                            } else if (item.priceText) {
+                                itemPrice = parseFloat(String(item.priceText).replace('€', '').replace(',', '.').trim());
+                                console.log(`Prix récupéré depuis priceText: ${itemPrice}`);
+                            }
+                        }
+                        
+                        // Gestion spéciale pour les produits avec prix nul (récupération du panier)
+                        if ((itemPrice === 0 || isNaN(itemPrice)) && item.type === 'product') {
+                            console.warn(`Correction de prix pour le produit: ${item.name}`);
+                            
+                            // Pour les produits, on va vérifier directement dans le contenu de la page boutique-goodies
+                            const tempElement = document.createElement('div');
+                            tempElement.innerHTML = `<span class="text-xl font-bold text-gray-900">${item.priceText || "0,00 €"}</span>`;
+                            const textPrice = tempElement.textContent.replace('€', '').replace(',', '.').trim();
+                            itemPrice = parseFloat(textPrice);
+                            
+                            console.log(`Prix récupéré depuis la page (simulation): ${itemPrice}`);
+                            
+                            // Si toujours invalide, utiliser une valeur plus sûre
+                            if (isNaN(itemPrice) || itemPrice === 0) {
+                                // Valeur par défaut basée sur le type de produit (estimation)
+                                if (item.name.toLowerCase().includes('serviette')) {
+                                    itemPrice = 39.99;
+                                } else if (item.name.toLowerCase().includes('casquette')) {
+                                    itemPrice = 29.95;
+                                } else if (item.name.toLowerCase().includes('t-shirt')) {
+                                    itemPrice = 34.50;
+                                } else if (item.name.toLowerCase().includes('gourde')) {
+                                    itemPrice = 24.99;
+                                } else {
+                                    itemPrice = 29.99; // Valeur par défaut
+                                }
+                                console.log(`Prix estimé basé sur le nom du produit: ${itemPrice}`);
+                            }
+                        }
+                        
+                        // S'assurer que le prix n'est pas NaN après toutes les tentatives
+                        if (isNaN(itemPrice)) {
+                            itemPrice = 0;
+                        }
+                        
+                        // Mettre à jour le prix dans l'objet pour les prochains affichages
+                        item.price = itemPrice;
+                        
+                        const itemTotal = itemPrice * item.quantity;
+                        subtotal += itemTotal;
+                        
+                        // Déterminer la couleur selon le tournoi
+                        let tournamentColor = '';
+                        switch(item.tournament.toLowerCase()) {
+                            case 'roland garros':
+                                tournamentColor = 'text-smash-clay';
+                                break;
+                            case 'wimbledon':
+                                tournamentColor = 'text-smash-green';
+                                break;
+                            case 'us open':
+                                tournamentColor = 'text-smash-purple';
+                                break;
+                            case 'open d\'australie':
+                                tournamentColor = 'text-smash-blue';
+                                break;
+                            default:
+                                tournamentColor = 'text-gray-700';
+                                break;
+                        }
+                        
+                        // Adapter l'affichage selon qu'il s'agit d'un billet ou d'un produit
+                        const isProduct = item.type === 'product';
+                        
+                        row.innerHTML = `
+                            <td class="px-4 py-4">
+                                <div>
+                                    <p class="font-semibold">${item.name}</p>
+                                    <p class="text-sm text-gray-600">
+                                        ${isProduct ? 'Description: ' : 'Date: '}${item.date}
+                                        ${isProduct ? `<span class="ml-2 text-xs bg-blue-100 text-blue-800 px-1 py-0.5 rounded">Produit</span>` : ''}
+                                    </p>
+                                </div>
+                            </td>
+                            <td class="px-4 py-4">
+                                <span class="font-medium ${tournamentColor}">${item.tournament}</span>
+                            </td>
+                            <td class="px-4 py-4 text-center">${formatPrice(itemPrice)}</td>
+                            <td class="px-4 py-4 text-center">
+                                <div class="flex items-center justify-center">
+                                    <button type="button" class="decrease-quantity px-2 py-1 bg-gray-200 rounded-l hover:bg-gray-300" data-index="${index}">-</button>
+                                    <span class="px-3 py-1 bg-gray-100">${item.quantity}</span>
+                                    <button type="button" class="increase-quantity px-2 py-1 bg-gray-200 rounded-r hover:bg-gray-300" data-index="${index}">+</button>
+                                </div>
+                            </td>
+                            <td class="px-4 py-4 text-right font-medium">${formatPrice(itemTotal)}</td>
+                            <td class="px-4 py-4 text-center">
+                                <button type="button" class="remove-item text-red-500 hover:text-red-700" data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        `;
+                        
+                        cartItemsContainer.insertBefore(row, emptyCartMessage);
+                    });
+                    
+                    // Calculer et afficher les totaux
+                    const serviceFee = subtotal * 0.05;
+                    const total = subtotal + serviceFee;
+                    
+                    subtotalElement.textContent = formatPrice(subtotal);
+                    serviceFeeElement.textContent = formatPrice(serviceFee);
+                    totalElement.textContent = formatPrice(total);
+                    
+                    // Mettre à jour également le récapitulatif
+                    summarySubtotal.textContent = formatPrice(subtotal);
+                    summaryServiceFee.textContent = formatPrice(serviceFee);
+                    summaryTotal.textContent = formatPrice(total);
+                    orderTotal.textContent = formatPrice(total);
+                }
+            }
+            
+            // Gérer les événements de quantité
+            function handleQuantityEvents() {
+                // Diminuer la quantité
+                document.querySelectorAll('.decrease-quantity').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        if (cart[index].quantity > 1) {
+                            cart[index].quantity--;
+                            localStorage.setItem('smashCart', JSON.stringify(cart));
+                            renderCart();
+                        }
+                    });
+                });
+                
+                // Augmenter la quantité
+                document.querySelectorAll('.increase-quantity').forEach(button => {
+                    button.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        // Vérifier le stock disponible pour les produits
+                        const stockLimit = cart[index].stock || Infinity;
+                        if (cart[index].quantity < stockLimit) {
+                            cart[index].quantity++;
+                            localStorage.setItem('smashCart', JSON.stringify(cart));
+                            renderCart();
+                        } else {
+                            alert('Quantité maximum atteinte pour ce produit.');
+                        }
+                    });
+                });
+                
+                // CORRECTION POUR LA SUPPRESSION DES ARTICLES
+                document.querySelectorAll('.remove-item').forEach(button => {
+                    // Supprimer tous les gestionnaires d'événements existants pour éviter les doublons
+                    const newButton = button.cloneNode(true);
+                    button.parentNode.replaceChild(newButton, button);
+                    
+                    // Ajouter le nouveau gestionnaire
+                    newButton.addEventListener('click', function() {
+                        const index = parseInt(this.dataset.index);
+                        if (isNaN(index)) {
+                            console.error("Index invalide pour la suppression:", this.dataset.index);
+                            return;
+                        }
+                        
+                        console.log("Suppression de l'article à l'index:", index);
+                        
+                        // Obtenir la référence à la ligne du tableau
+                        const row = this.closest('tr');
+                        
+                        if (!row) {
+                            console.error("Impossible de trouver la ligne du tableau");
+                            return;
+                        }
+                        
+                        // Supprimer l'article du tableau de données
+                        if (index >= 0 && index < cart.length) {
+                            cart.splice(index, 1);
+                            localStorage.setItem('smashCart', JSON.stringify(cart));
+                            
+                            // Animation de suppression puis mise à jour complète du panier
+                            row.style.backgroundColor = "#FFDDDD";
+                            row.style.transition = "all 0.3s ease";
+                            row.style.opacity = "0.5";
+                            
+                            setTimeout(() => {
+                                // Reconstruire complètement l'affichage du panier
+                                renderCart();
+                                handleQuantityEvents();
+                            }, 300);
+                        } else {
+                            console.error("Index hors limites:", index, "Longueur du panier:", cart.length);
+                        }
+                    });
+                });
+            }
+            
+            // Fonction pour changer d'étape - MISE À JOUR POUR HARMONISATION AVEC BOUTONS
+            function goToStep(step) {
+                // Cacher toutes les étapes
+                Object.values(stepElements).forEach(el => {
+                    el.classList.add('hidden');
+                    el.classList.remove('active');
+                });
+                
+                // Activer l'étape courante
+                stepElements[step].classList.remove('hidden');
+                stepElements[step].classList.add('active');
+                
+                // Mettre à jour les indicateurs
+                for (let i = 1; i <= 4; i++) {
+                    const stepIndicator = stepIndicators[i];
+                    const mainDiv = stepIndicator.querySelector('div:first-child');
+                    const arrowDiv = stepIndicator.querySelector('div:last-child');
+                    
+                    if (i <= step) {
+                        // Étape active ou complétée
+                        mainDiv.classList.remove('bg-gray-400');
+                        mainDiv.classList.add('bg-smash-green');
+                        mainDiv.classList.remove('hover:bg-gray-500');
+                        mainDiv.classList.add('hover:bg-smash-green-dark');
+                        
+                        // Mettre à jour la couleur de la flèche si elle existe
+                        if (arrowDiv) {
+                            arrowDiv.classList.remove('border-l-gray-400');
+                            arrowDiv.classList.add('border-l-smash-green');
+                        }
+                    } else {
+                        // Étape future
+                        mainDiv.classList.remove('bg-smash-green');
+                        mainDiv.classList.add('bg-gray-400');
+                        mainDiv.classList.remove('hover:bg-smash-green-dark');
+                        mainDiv.classList.add('hover:bg-gray-500');
+                        
+                        // Mettre à jour la couleur de la flèche si elle existe
+                        if (arrowDiv) {
+                            arrowDiv.classList.remove('border-l-smash-green');
+                            arrowDiv.classList.add('border-l-gray-400');
+                        }
+                    }
+                }
+            }
+            
+            // Gérer les boutons de navigation entre les étapes
+            document.getElementById('to-step-2').addEventListener('click', function() {
+                goToStep(2);
+            });
+            
+            document.getElementById('back-to-step-1').addEventListener('click', function() {
+                goToStep(1);
+            });
+            
+            document.getElementById('to-step-3').addEventListener('click', function() {
+                // Vérifier la validité du formulaire
+                const form = document.getElementById('customer-info-form');
+                if (form.checkValidity()) {
+                    goToStep(3);
+                } else {
+                    form.reportValidity();
+                }
+            });
+            
+            document.getElementById('back-to-step-2').addEventListener('click', function() {
+                goToStep(2);
+            });
+            
+            document.getElementById('complete-order').addEventListener('click', function() {
+                // Vérifier la validité du formulaire
+                const form = document.getElementById('payment-form');
+                if (form.checkValidity()) {
+                    // Générer un numéro de commande aléatoire
+                    orderNumber.textContent = getRandomOrderNumber();
+                    
+                    // Définir la date du jour
+                    orderDate.textContent = getCurrentDate();
+                    
+                    // Récupérer l'email du client
+                    orderEmail.textContent = document.getElementById('email').value;
+                    
+                    // Afficher la confirmation
+                    goToStep(4);
+                    
+                    // Vider le panier
+                    cart = [];
+                    localStorage.setItem('smashCart', JSON.stringify(cart));
+                    
+                    // Mettre à jour la barre de progression à 100%
+                    progressBar.style.width = '100%';
+                } else {
+                    form.reportValidity();
+                }
+            });
+            
+            // Radio boutons de paiement - MISE À JOUR pour gérer les champs requis
+            document.getElementById('credit-card').addEventListener('change', function() {
+                document.getElementById('credit-card-fields').style.display = 'block';
+                
+                // Rendre les champs de carte de crédit requis quand ce mode est sélectionné
+                document.getElementById('card_number').required = true;
+                document.getElementById('card_name').required = true;
+                document.getElementById('expiry_date').required = true;
+                document.getElementById('cvv').required = true;
+            });
+            
+            document.getElementById('paypal').addEventListener('change', function() {
+                document.getElementById('credit-card-fields').style.display = 'none';
+                
+                // Rendre les champs de carte de crédit non requis quand PayPal est sélectionné
+                document.getElementById('card_number').required = false;
+                document.getElementById('card_name').required = false;
+                document.getElementById('expiry_date').required = false;
+                document.getElementById('cvv').required = false;
+            });
+            
+            // Lancer le rendu initial du panier
+            renderCart();
+            handleQuantityEvents();
+        });
+    </script>
+</body>
+</html>

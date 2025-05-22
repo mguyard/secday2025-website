@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../images/logos/logo.png" alt="SMASH" class="h-14">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="../index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
+                    <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition">Billets</a>
+                    <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
+                    <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition">À propos</a>
+                    <a href="contact.html" class="text-smash-green font-semibold transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="../index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
+                <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
+                <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
+                <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
+                <a href="contact.html" class="text-smash-green font-semibold transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-32" style="background-image: url('https://placehold.co/1920x600/111827/ffffff?text=Contactez-nous')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-white text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Contactez-nous</h1>
+                <p class="text-xl max-w-3xl mx-auto">Une question, une demande spécifique ou besoin d'assistance ? Notre équipe est à votre disposition.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Formulaire de contact -->
+                <div class="lg:w-2/3">
+                    <h2 class="text-3xl font-bold mb-8">Envoyez-nous un message</h2>
+                    <form id="contact-form" method="post" action="/api/contact" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nom" class="block text-sm font-medium text-gray-700 mb-1">Nom <span class="text-red-500">*</span></label>
+                                <input type="text" id="nom" name="nom" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="prenom" class="block text-sm font-medium text-gray-700 mb-1">Prénom <span class="text-red-500">*</span></label>
+                                <input type="text" id="prenom" name="prenom" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="email" name="email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="telephone" class="block text-sm font-medium text-gray-700 mb-1">Téléphone</label>
+                                <input type="tel" id="telephone" name="telephone" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="sujet" class="block text-sm font-medium text-gray-700 mb-1">Sujet <span class="text-red-500">*</span></label>
+                            <select id="sujet" name="sujet" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                                <option value="">Sélectionnez un sujet</option>
+                                <option value="billetterie">Question sur la billetterie</option>
+                                <option value="boutique">Question sur la boutique</option>
+                                <option value="evenements">Information sur les tournois</option>
+                                <option value="partenariat">Proposition de partenariat</option>
+                                <option value="autre">Autre demande</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message <span class="text-red-500">*</span></label>
+                            <textarea id="message" name="message" rows="6" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex items-center h-5">
+                                <input id="rgpd" name="rgpd" type="checkbox" required class="h-4 w-4 text-smash-green focus:ring-smash-green border-gray-300 rounded">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="rgpd" class="font-medium text-gray-700">J'accepte que mes données soient traitées conformément à la <a href="#" class="text-smash-blue hover:underline">politique de confidentialité</a> de SMASH. Vos données sont protégées par notre infrastructure de sécurité FortiDATA et notre architecture Secuity Fabric.</label>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <button type="submit" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+                                Envoyer le message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Informations de contact -->
+                <div class="lg:w-1/3 space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Informations de contact</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="bg-gray-100 rounded-full p-2 mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt text-smash-clay"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Adresse</h4>
+                                    <address class="not-italic text-gray-600">
+                                        123 Avenue du Tennis<br>
+                                        75016 Paris, France
+                                    </address>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-gray-100 rounded-full p-2 mr-4 mt-1">
+                                    <i class="fas fa-phone-alt text-smash-blue"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Téléphone</h4>
+                                    <p class="text-gray-600">+33 1 23 45 67 89</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-gray-100 rounded-full p-2 mr-4 mt-1">
+                                    <i class="fas fa-envelope text-smash-purple"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-600">contact@smash.show</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-gray-100 rounded-full p-2 mr-4 mt-1">
+                                    <i class="fas fa-clock text-smash-green"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Horaires d'ouverture</h4>
+                                    <p class="text-gray-600">Lundi - Vendredi : 9h - 18h<br>
+                                    Samedi : 10h - 16h<br>
+                                    Fermé le dimanche</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Suivez-nous</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-600 p-3 rounded-full transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-600 p-3 rounded-full transition duration-300">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-600 p-3 rounded-full transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="bg-gray-100 hover:bg-gray-200 text-gray-600 p-3 rounded-full transition duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Notre localisation</h2>
+            <div class="h-96 bg-gray-300 rounded-lg overflow-hidden shadow-lg">
+                <!-- Placeholder pour une carte interactive -->
+                <div class="h-full flex items-center justify-center bg-cover bg-center" style="background-image: url('https://placehold.co/1200x600/e9ecef/343a40?text=Carte+SMASH+Paris')">
+                    <div class="bg-white bg-opacity-90 p-6 rounded-lg shadow-lg">
+                        <h3 class="font-bold text-lg mb-2">SMASH</h3>
+                        <p class="text-gray-700">123 Avenue du Tennis, 75016 Paris</p>
+                        <a href="https://maps.google.com" target="_blank" class="inline-block mt-3 text-smash-blue hover:underline">Ouvrir dans Google Maps</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Questions fréquentes</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Quel est le délai de réponse à mes demandes ?</h3>
+                    <p class="text-gray-700">Nous nous efforçons de répondre à toutes les demandes dans un délai de 24 à 48 heures ouvrées. Pour les demandes urgentes concernant des billets pour des événements imminents, nous vous recommandons de nous contacter par téléphone. Mais attention, notre équipe est aussi rapide qu'un service de Djokovic... pas une raquette cassée en vue ! Et puisque SMASH n'est qu'une société imaginaire, nos délais de réponse sont aussi fictifs que notre titre de "faux partenaire officiel du Grand Chelem" - mais on aime quand même jouer le jeu !</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Comment recevoir une assistance technique sur le site ?</h3>
+                    <p class="text-gray-700">Pour toute difficulté technique rencontrée sur notre plateforme, vous pouvez contacter notre équipe support à support@smash.show ou via notre formulaire de contact en sélectionnant "Autre demande" comme sujet. N'oubliez pas de préciser l'appareil et le navigateur utilisés pour nous aider à résoudre votre problème plus efficacement. Notre équipe technique répond aussi vite qu'un retour de Nadal - et contrairement à certains serveurs, nos techniciens ne font jamais de fautes ! Bien sûr, puisque SMASH n'est qu'une société fictive créée pour ce site vitrine, nos problèmes techniques sont aussi imaginaires que nos médailles olympiques - mais on aime faire semblant d'avoir un service client de champion !</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Quels sont les moyens de paiement acceptés pour les achats effectués par téléphone ?</h3>
+                    <p class="text-gray-700">Pour les achats ou réservations effectués par téléphone avec notre service client, nous acceptons les cartes de crédit Visa, Mastercard et American Express. Les transactions sont sécurisées par notre système FortiPay et vous recevrez une confirmation par email dès validation de votre paiement. Et n'ayez crainte, notre système de sécurité est aussi impénétrable que le revers de Federer - même les hackers les plus tenaces finissent par abandonner après trois tentatives, comme face à un Nadal sur terre battue ! Bien sûr, puisque SMASH n'existe que dans ce monde virtuel et que nos cartes bancaires sont aussi fictives que nos victoires en Grand Chelem, vous pouvez "payer" en toute tranquillité - c'est probablement le seul endroit où votre carte ne sera jamais débitée !</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Comment devenir partenaire de SMASH ?</h3>
+                    <p class="text-gray-700">Si vous souhaitez devenir partenaire ou proposer vos produits dans notre boutique, veuillez nous contacter via le formulaire en sélectionnant "Proposition de partenariat" comme sujet. Notre équipe commerciale étudiera votre demande avec autant d'attention qu'un arbitre de chaise lors d'une balle de match. Et rassurez-vous, contrairement à certains joueurs, nous ne jetons jamais les propositions intéressantes hors du court ! Bien entendu, puisque SMASH n'existe que dans cette dimension virtuelle (comme nos chances de battre Nadal sur terre battue), vos propositions de partenariat sont aussi fictives que nos trophées du Grand Chelem... mais on adore faire semblant d'être importants !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-cover bg-center relative" style="background-image: url('https://placehold.co/1920x600/333333/ffffff?text=Service+Client+SMASH')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Une équipe à votre service</h2>
+            <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Notre service client est disponible pour vous accompagner dans toutes vos démarches et répondre à toutes vos questions sur les tournois du Grand Chelem.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="tel:+33123456789" class="inline-block bg-white text-gray-900 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-300">
+                    <i class="fas fa-phone-alt mr-2"></i> Nous appeler
+                </a>
+                <a href="mailto:contact@smash.show" class="inline-block bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 rounded-lg border-2 border-white transition duration-300">
+                    <i class="fas fa-envelope mr-2"></i> Nous écrire
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-smash-green text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        SMASH
+                    </h3>
+                    <p class="text-gray-200">Votre faux partenaire officiel pour tous les tournois du Grand Chelem.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tournois</h4>
+                    <ul class="space-y-2">
+                        <li><a href="evenements.html#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
+                        <li><a href="evenements.html#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
+                        <li><a href="evenements.html#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
+                        <li><a href="evenements.html#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <address class="not-italic text-gray-200">
+                        <p>123 Avenue du Tennis</p>
+                        <p>75016 Paris, France</p>
+                        <p class="mt-2">+33 1 23 45 67 89</p>
+                        <p>contact@smash.show</p>
+                    </address>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-200 my-8">
+            <div class="text-center text-gray-300">
+                <p>&copy; 2025 SMASH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Script spécifique à la page de contact
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Récupération des valeurs du formulaire
+                    const nom = document.getElementById('nom').value;
+                    const prenom = document.getElementById('prenom').value;
+                    const email = document.getElementById('email').value;
+                    const telephone = document.getElementById('telephone').value;
+                    const sujet = document.getElementById('sujet').value;
+                    const message = document.getElementById('message').value;
+                    const rgpd = document.getElementById('rgpd').checked;
+                    
+                    // Préparation des données pour l'envoi
+                    const formData = new FormData();
+                    formData.append('nom', nom);
+                    formData.append('prenom', prenom);
+                    formData.append('email', email);
+                    formData.append('telephone', telephone);
+                    formData.append('sujet', sujet);
+                    formData.append('message', message);
+                    formData.append('rgpd', rgpd);
+                    
+                    // Simulation d'envoi de formulaire
+                    const submitButton = contactForm.querySelector('button[type="submit"]');
+                    const originalText = submitButton.textContent;
+                    
+                    submitButton.textContent = 'Envoi en cours...';
+                    submitButton.disabled = true;
+                    
+                    // Envoi réel des données via POST
+                    fetch(contactForm.action, {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Erreur réseau lors de l\'envoi du formulaire');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Réinitialisation du formulaire
+                        contactForm.reset();
+                        
+                        // Affichage d'un message de confirmation
+                        alert(`Merci ${prenom} ${nom} ! Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.`);
+                    })
+                    .catch(error => {
+                        console.error('Erreur:', error);
+                        
+                        // Mode de secours - simulation locale si l'API n'est pas disponible
+                        console.log("Mode de secours activé - Simulation d'envoi locale");
+                        
+                        // Réinitialisation du formulaire quand même
+                        contactForm.reset();
+                        
+                        // Affichage d'un message de confirmation
+                        alert(`Merci ${prenom} ${nom} ! Votre message a bien été envoyé. Nous vous répondrons dans les plus brefs délais.`);
+                    })
+                    .finally(() => {
+                        // Réinitialisation du bouton
+                        submitButton.textContent = originalText;
+                        submitButton.disabled = false;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traitement du message | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <div class="flex items-center justify-between mb-8">
+                <h1 class="text-2xl font-bold">Confirmation de votre message</h1>
+                <a href="../../index.html" class="text-smash-green hover:underline">
+                    <span class="text-smash-blue">S</span><span class="text-smash-clay">M</span><span class="text-smash-green">A</span><span class="text-smash-purple">S</span><span class="text-smash-blue">H</span>
+                </a>
+            </div>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-green-700">
+                            Votre message a été envoyé avec succès. Notre équipe vous répondra dans les plus brefs délais.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informations du message -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Résumé de votre message</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <p class="text-sm text-gray-600">Nom</p>
+                        <p class="font-medium" id="contact-nom">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Prénom</p>
+                        <p class="font-medium" id="contact-prenom">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Email</p>
+                        <p class="font-medium" id="contact-email">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Téléphone</p>
+                        <p class="font-medium" id="contact-telephone">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Sujet</p>
+                        <p class="font-medium" id="contact-sujet">-</p>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="text-sm text-gray-600 mb-1">Message</p>
+                    <div class="p-4 bg-gray-50 rounded-lg">
+                        <p id="contact-message" class="whitespace-pre-line">-</p>
+                    </div>
+                </div>
+                
+                <div class="text-sm text-gray-600">
+                    <p id="contact-rgpd">
+                        <i class="fas fa-check-circle text-green-500 mr-1"></i> Vous avez accepté notre politique de confidentialité.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Détails techniques (simulations d'API) -->
+            <div class="mb-8 border rounded-md p-4 bg-gray-50">
+                <h2 class="text-xl font-semibold mb-2">Détails techniques (Simulation d'API)</h2>
+                <p class="text-sm text-gray-600 mb-2">Cette page simule une réponse d'API après soumission du formulaire de contact. Données reçues :</p>
+                <div class="bg-gray-900 text-green-400 p-3 rounded text-xs font-mono overflow-x-auto">
+                    <pre id="api-response">Chargement des données...</pre>
+                </div>
+            </div>
+
+            <!-- Références -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Nous contacter autrement</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex items-start">
+                        <div class="bg-gray-100 rounded-full p-2 mr-4 mt-1">
+                            <i class="fas fa-phone-alt text-smash-blue"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Téléphone</h4>
+                            <p class="text-gray-600">+33 1 23 45 67 89</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-gray-100 rounded-full p-2 mr-4 mt-1">
+                            <i class="fas fa-envelope text-smash-purple"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Email</h4>
+                            <p class="text-gray-600">contact@smash-tennis.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="flex justify-between">
+                <a href="../../pages/contact.html" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300">
+                    <i class="fas fa-arrow-left mr-2"></i> Retour au formulaire
+                </a>
+                <a href="../../index.html" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Accueil <i class="fas fa-home ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Simuler la réception des paramètres POST
+            function getFormDataFromUrl() {
+                // Dans un vrai scénario, ces données viendraient de req.body
+                // On simule la réception des données ici
+                const urlParams = new URLSearchParams(window.location.search);
+                
+                return {
+                    nom: urlParams.get('nom') || 'Dupont',
+                    prenom: urlParams.get('prenom') || 'Jean',
+                    email: urlParams.get('email') || 'jean.dupont@exemple.com',
+                    telephone: urlParams.get('telephone') || '0123456789',
+                    sujet: urlParams.get('sujet') || 'Question sur la billetterie',
+                    message: urlParams.get('message') || 'Je souhaiterais avoir plus d\'informations sur la disponibilité des billets pour Roland Garros 2024.',
+                    rgpd: urlParams.get('rgpd') || 'on',
+                    timestamp: new Date().toISOString(),
+                    request_id: 'req_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9)
+                };
+            }
+            
+            // Récupérer les données simulées
+            const formData = getFormDataFromUrl();
+            
+            // Afficher les informations du message
+            document.getElementById('contact-nom').textContent = formData.nom;
+            document.getElementById('contact-prenom').textContent = formData.prenom;
+            document.getElementById('contact-email').textContent = formData.email;
+            document.getElementById('contact-telephone').textContent = formData.telephone || 'Non renseigné';
+            document.getElementById('contact-sujet').textContent = formData.sujet;
+            document.getElementById('contact-message').textContent = formData.message;
+            
+            // Afficher l'état RGPD
+            const rgpdElement = document.getElementById('contact-rgpd');
+            if (formData.rgpd !== 'on') {
+                rgpdElement.innerHTML = '<i class="fas fa-times-circle text-red-500 mr-1"></i> ATTENTION: La politique de confidentialité n\'a pas été acceptée.';
+                rgpdElement.classList.add('text-red-600');
+            }
+            
+            // Afficher les données techniques
+            document.getElementById('api-response').textContent = JSON.stringify(
+                {
+                    request: {
+                        method: 'POST',
+                        endpoint: '/api/contact',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRF-Token': 'simulated-token'
+                        },
+                        body: formData
+                    },
+                    response: {
+                        status: 200,
+                        message: 'Message received successfully',
+                        ticket_id: 'tckt_' + Math.random().toString(36).substr(2, 9),
+                        timestamp: new Date().toISOString(),
+                        estimated_response_time: '24-48h'
+                    }
+                }, 
+                null, 
+                2
+            );
+        });
+    </script>
+</body>
+</html>

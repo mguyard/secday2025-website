@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traitement des informations client | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-8">
+            <div class="flex items-center justify-between mb-8">
+                <h1 class="text-2xl font-bold">Résumé de votre commande</h1>
+                <a href="../../index.html" class="flex items-center">
+                    <img src="../../images/logos/logo.png" alt="SMASH" class="h-10">
+                </a>
+            </div>
+
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-6">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-check-circle text-green-500"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-green-700">
+                            Vos informations ont été reçues avec succès. Veuillez vérifier les détails ci-dessous.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Informations client -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Vos informations personnelles</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-600">Nom complet</p>
+                        <p class="font-medium" id="customer-name">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Email</p>
+                        <p class="font-medium" id="customer-email">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Téléphone</p>
+                        <p class="font-medium" id="customer-phone">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Adresse</p>
+                        <p class="font-medium" id="customer-address">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Code postal</p>
+                        <p class="font-medium" id="customer-postal">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Ville</p>
+                        <p class="font-medium" id="customer-city">-</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-600">Pays</p>
+                        <p class="font-medium" id="customer-country">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Récapitulatif du panier -->
+            <div class="mb-8">
+                <h2 class="text-xl font-semibold mb-4 border-b pb-2">Articles dans votre panier</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Produit</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tournoi</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Prix</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Qté</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cart-items-summary" class="bg-white divide-y divide-gray-200">
+                            <!-- Les éléments du panier seront ajoutés ici -->
+                            <tr>
+                                <td colspan="5" class="px-6 py-4 text-center text-gray-500 italic">
+                                    Chargement des données du panier...
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3" class="px-6 py-4"></td>
+                                <td class="px-6 py-4 text-right font-medium">Sous-total:</td>
+                                <td class="px-6 py-4 text-right font-medium" id="subtotal">-</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="px-6 py-4"></td>
+                                <td class="px-6 py-4 text-right text-sm">Frais de service (5%):</td>
+                                <td class="px-6 py-4 text-right text-sm" id="service-fee">-</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td colspan="3" class="px-6 py-4"></td>
+                                <td class="px-6 py-4 text-right font-bold">TOTAL:</td>
+                                <td class="px-6 py-4 text-right font-bold" id="total-price">-</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Détails techniques (simulations d'API) -->
+            <div class="mb-8 border rounded-md p-4 bg-gray-50">
+                <h2 class="text-xl font-semibold mb-2">Détails techniques (Simulation d'API)</h2>
+                <p class="text-sm text-gray-600 mb-2">Cette page simule une réponse d'API après soumission du formulaire. Données reçues :</p>
+                <div class="bg-gray-900 text-green-400 p-3 rounded text-xs font-mono overflow-x-auto">
+                    <pre id="api-response">Chargement des données...</pre>
+                </div>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="flex justify-between">
+                <a href="../../pages/cart.html" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300">
+                    <i class="fas fa-arrow-left mr-2"></i> Modifier mes informations
+                </a>
+                <a href="../../pages/cart.html#payment" id="continue-button" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Procéder au paiement <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Récupérer les données du localStorage (dans un vrai scénario, cela viendrait du POST)
+            const cart = JSON.parse(localStorage.getItem('smashCart')) || [];
+            
+            // Fonction pour formater un prix
+            function formatPrice(price) {
+                return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(price);
+            }
+            
+            // Simuler la réception des paramètres POST
+            function getFormDataFromUrl() {
+                // Simuler les données du formulaire qu'on aurait reçues via POST
+                // En environnement réel, ces données viendraient de req.body
+                return {
+                    firstname: localStorage.getItem('customer_firstname') || 'Jean',
+                    lastname: localStorage.getItem('customer_lastname') || 'Dupont',
+                    email: localStorage.getItem('customer_email') || 'jean.dupont@exemple.com',
+                    phone: localStorage.getItem('customer_phone') || '0123456789',
+                    address: localStorage.getItem('customer_address') || '123 Avenue des Champions',
+                    postal_code: localStorage.getItem('customer_postal_code') || '75016',
+                    city: localStorage.getItem('customer_city') || 'Paris',
+                    country: localStorage.getItem('customer_country') || 'France',
+                    cart_id: 'cart_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9),
+                    step: 'customer-info',
+                    newsletter: localStorage.getItem('customer_newsletter') === 'true' ? 'on' : 'off'
+                };
+            }
+            
+            // Récupérer les données simulées
+            const formData = getFormDataFromUrl();
+            
+            // Afficher les informations du client
+            document.getElementById('customer-name').textContent = `${formData.firstname} ${formData.lastname}`;
+            document.getElementById('customer-email').textContent = formData.email;
+            document.getElementById('customer-phone').textContent = formData.phone;
+            document.getElementById('customer-address').textContent = formData.address;
+            document.getElementById('customer-postal').textContent = formData.postal_code;
+            document.getElementById('customer-city').textContent = formData.city;
+            document.getElementById('customer-country').textContent = formData.country;
+            
+            // Générer le résumé du panier
+            const cartContainer = document.getElementById('cart-items-summary');
+            cartContainer.innerHTML = ''; // Vider le contenu actuel
+            
+            let subtotal = 0;
+            
+            if (cart.length === 0) {
+                cartContainer.innerHTML = `
+                    <tr>
+                        <td colspan="5" class="px-6 py-4 text-center text-gray-500 italic">
+                            Votre panier est vide.
+                        </td>
+                    </tr>
+                `;
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    
+                    // Déterminer la couleur selon le tournoi
+                    let tournamentColor = '';
+                    switch(item.tournament.toLowerCase()) {
+                        case 'roland garros':
+                            tournamentColor = 'text-smash-clay';
+                            break;
+                        case 'wimbledon':
+                            tournamentColor = 'text-smash-green';
+                            break;
+                        case 'us open':
+                            tournamentColor = 'text-smash-purple';
+                            break;
+                        case 'open d\'australie':
+                            tournamentColor = 'text-smash-blue';
+                            break;
+                        default:
+                            tournamentColor = 'text-gray-700';
+                            break;
+                    }
+                    
+                    // Adapter l'affichage selon qu'il s'agit d'un billet ou d'un produit
+                    const isProduct = item.type === 'product';
+                    
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="text-sm font-medium text-gray-900">
+                                ${item.name}
+                                ${isProduct ? `<span class="ml-2 text-xs bg-blue-100 text-blue-800 px-1 py-0.5 rounded">Produit</span>` : ''}
+                            </div>
+                            <div class="text-sm text-gray-500">${isProduct ? 'Description: ' : 'Date: '}${item.date}</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="font-medium ${tournamentColor}">${item.tournament}</span>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-500">
+                            ${formatPrice(item.price)}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm text-gray-500">
+                            ${item.quantity}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                            ${formatPrice(itemTotal)}
+                        </td>
+                    `;
+                    cartContainer.appendChild(row);
+                });
+            }
+            
+            const serviceFee = subtotal * 0.05;
+            const total = subtotal + serviceFee;
+            
+            document.getElementById('subtotal').textContent = formatPrice(subtotal);
+            document.getElementById('service-fee').textContent = formatPrice(serviceFee);
+            document.getElementById('total-price').textContent = formatPrice(total);
+            
+            // Afficher les données techniques
+            document.getElementById('api-response').textContent = JSON.stringify(
+                {
+                    request: {
+                        method: 'POST',
+                        endpoint: '/api/checkout/customer-info',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                            'X-CSRF-Token': 'simulated-token'
+                        },
+                        body: {
+                            ...formData,
+                            cart_items: cart.map(item => ({
+                                id: item.name.replace(/\s+/g, '-').toLowerCase(),
+                                name: item.name,
+                                tournament: item.tournament,
+                                date: item.date,
+                                price: item.price,
+                                quantity: item.quantity
+                            }))
+                        }
+                    },
+                    response: {
+                        status: 200,
+                        message: 'Customer information received successfully',
+                        customer_id: 'cust_' + Math.random().toString(36).substr(2, 9),
+                        cart_id: formData.cart_id,
+                        total_amount: total,
+                        next_step: 'payment'
+                    }
+                }, 
+                null, 
+                2
+            );
+            
+            // Ajout du comportement pour le bouton de continuation
+            document.getElementById('continue-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Stocker temporairement les informations client dans localStorage
+                // Dans une vraie application, ces données seraient gérées côté serveur
+                localStorage.setItem('customer_firstname', formData.firstname);
+                localStorage.setItem('customer_lastname', formData.lastname);
+                localStorage.setItem('customer_email', formData.email);
+                localStorage.setItem('customer_phone', formData.phone);
+                localStorage.setItem('customer_address', formData.address);
+                localStorage.setItem('customer_postal_code', formData.postal_code);
+                localStorage.setItem('customer_city', formData.city);
+                localStorage.setItem('customer_country', formData.country);
+                localStorage.setItem('customer_newsletter', formData.newsletter === 'on');
+                
+                // Rediriger vers l'étape du paiement
+                window.location.href = '../../pages/cart.html#payment';
+            });
+        });
+    </script>
+</body>
+</html>

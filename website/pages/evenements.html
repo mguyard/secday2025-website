@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tournois du Grand Chelem | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../images/logos/logo.png" alt="SMASH" class="h-14">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="../index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="evenements.html" class="text-smash-green font-semibold transition">Tournois</a>
+                    <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition">Billets</a>
+                    <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
+                    <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition">À propos</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-smash-green transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="../index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="evenements.html" class="text-smash-green font-semibold transition py-2">Tournois</a>
+                <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
+                <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
+                <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
+                <a href="contact.html" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-32" style="background-image: url('https://placehold.co/1920x600/111827/ffffff?text=Les+Tournois+du+Grand+Chelem')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-white text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Les Tournois du Grand Chelem</h1>
+                <p class="text-xl max-w-3xl mx-auto">Découvrez les quatre tournois les plus prestigieux du tennis mondial, leur histoire, leurs particularités et comment y assister.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Le Grand Chelem en tennis</h2>
+                <p class="text-lg text-gray-700 mb-6">Le Grand Chelem en tennis désigne l'ensemble des quatre tournois majeurs internationaux : l'Open d'Australie, Roland-Garros, Wimbledon et l'US Open. Ces tournois sont les plus prestigieux, offrant le plus de points au classement ATP/WTA et les dotations les plus importantes.</p>
+                <p class="text-lg text-gray-700">Réaliser le Grand Chelem consiste à remporter ces quatre tournois au cours d'une même année civile, un exploit extrêmement rare dans l'histoire du tennis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Australian Open -->
+    <section id="australian-open" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
+                <div class="md:w-1/2 order-2 md:order-1">
+                    <div class="sticky top-24">
+                        <span class="inline-block text-sm text-white font-semibold bg-smash-blue px-3 py-1 rounded-full mb-4">Janvier</span>
+                        <h2 class="text-4xl font-bold mb-6 text-smash-blue">Open d'Australie</h2>
+                        <p class="text-gray-700 mb-4">L'Open d'Australie ouvre chaque année la saison des tournois du Grand Chelem. Disputé à Melbourne, ce tournoi se joue sur surface dure (GreenSet) et est connu pour ses conditions de jeu parfois extrêmes en raison des fortes chaleurs australiennes.</p>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-blue">Informations clés</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li><span class="font-semibold">Lieu :</span> Melbourne Park, Melbourne</li>
+                                <li><span class="font-semibold">Surface :</span> Dur (GreenSet)</li>
+                                <li><span class="font-semibold">Période :</span> 13-26 janvier 2025</li>
+                                <li><span class="font-semibold">Création :</span> 1905</li>
+                                <li><span class="font-semibold">Courts principaux :</span> Rod Laver Arena, Margaret Court Arena, John Cain Arena</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-blue">Derniers vainqueurs</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Hommes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Jannik Sinner</li>
+                                        <li>2023 : Novak Djokovic</li>
+                                        <li>2022 : Rafael Nadal</li>
+                                    </ul>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Femmes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Aryna Sabalenka</li>
+                                        <li>2023 : Aryna Sabalenka</li>
+                                        <li>2022 : Ashleigh Barty</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="boutique-tickets.html#australian-open" class="inline-block bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">Réserver mes billets</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <img src="https://placehold.co/800x1000/0077B6/ffffff?text=Open+d'Australie" alt="Open d'Australie" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roland Garros -->
+    <section id="roland-garros" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/800x1000/D13C32/ffffff?text=Roland+Garros" alt="Roland Garros" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <div class="sticky top-24">
+                        <span class="inline-block text-sm text-white font-semibold bg-smash-clay px-3 py-1 rounded-full mb-4">Mai-Juin</span>
+                        <h2 class="text-4xl font-bold mb-6 text-smash-clay">Roland Garros</h2>
+                        <p class="text-gray-700 mb-4">Surnommé "Les Internationaux de France", Roland Garros est le seul tournoi du Grand Chelem à se jouer sur terre battue. Ce tournoi parisien est considéré comme le plus exigeant physiquement, avec des échanges plus longs et une stratégie de jeu spécifique.</p>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-clay">Informations clés</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li><span class="font-semibold">Lieu :</span> Stade Roland-Garros, Paris</li>
+                                <li><span class="font-semibold">Surface :</span> Terre battue</li>
+                                <li><span class="font-semibold">Période :</span> 26 Mai - 8 Juin 2025</li>
+                                <li><span class="font-semibold">Création :</span> 1891</li>
+                                <li><span class="font-semibold">Courts principaux :</span> Court Philippe-Chatrier, Court Suzanne-Lenglen, Court Simonne-Mathieu</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-clay">Derniers vainqueurs</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Hommes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Carlos Alcaraz</li>
+                                        <li>2023 : Novak Djokovic</li>
+                                        <li>2022 : Rafael Nadal</li>
+                                    </ul>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Femmes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Iga Świątek</li>
+                                        <li>2023 : Iga Świątek</li>
+                                        <li>2022 : Iga Świątek</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="boutique-tickets.html#roland-garros" class="inline-block bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">Réserver mes billets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wimbledon -->
+    <section id="wimbledon" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
+                <div class="md:w-1/2 order-2 md:order-1">
+                    <div class="sticky top-24">
+                        <span class="inline-block text-sm text-white font-semibold bg-smash-green px-3 py-1 rounded-full mb-4">Juin-Juillet</span>
+                        <h2 class="text-4xl font-bold mb-6 text-smash-green">Wimbledon</h2>
+                        <p class="text-gray-700 mb-4">Le Championships, Wimbledon est le plus ancien tournoi de tennis au monde et considéré comme le plus prestigieux. Il est le seul tournoi du Grand Chelem à se jouer sur gazon, une surface rapide qui favorise un jeu offensif et des échanges courts.</p>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-green">Informations clés</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li><span class="font-semibold">Lieu :</span> All England Lawn Tennis and Croquet Club, Londres</li>
+                                <li><span class="font-semibold">Surface :</span> Gazon</li>
+                                <li><span class="font-semibold">Période :</span> 30 Juin - 13 Juillet 2025</li>
+                                <li><span class="font-semibold">Création :</span> 1877</li>
+                                <li><span class="font-semibold">Courts principaux :</span> Centre Court, Court No.1, Court No.2</li>
+                                <li><span class="font-semibold">Particularités :</span> Code vestimentaire blanc obligatoire, traditions britanniques</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-green">Derniers vainqueurs</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Hommes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Novak Djokovic</li>
+                                        <li>2023 : Carlos Alcaraz</li>
+                                        <li>2022 : Novak Djokovic</li>
+                                    </ul>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Femmes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Barbora Krejčíková</li>
+                                        <li>2023 : Markéta Vondroušová</li>
+                                        <li>2022 : Elena Rybakina</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="boutique-tickets.html#wimbledon" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">Réserver mes billets</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <img src="https://placehold.co/800x1000/007F5F/ffffff?text=Wimbledon" alt="Wimbledon" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- US Open -->
+    <section id="us-open" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/800x1000/563D7C/ffffff?text=US+Open" alt="US Open" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <div class="sticky top-24">
+                        <span class="inline-block text-sm text-white font-semibold bg-smash-purple px-3 py-1 rounded-full mb-4">Août-Septembre</span>
+                        <h2 class="text-4xl font-bold mb-6 text-smash-purple">US Open</h2>
+                        <p class="text-gray-700 mb-4">L'US Open est le dernier tournoi du Grand Chelem de l'année. Il se caractérise par son ambiance électrique et son public passionné. Joué sur surface dure, il est connu pour son jeu rapide et ses matchs spectaculaires, souvent disputés en session nocturne.</p>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-purple">Informations clés</h3>
+                            <ul class="space-y-2 text-gray-700">
+                                <li><span class="font-semibold">Lieu :</span> USTA Billie Jean King National Tennis Center, New York</li>
+                                <li><span class="font-semibold">Surface :</span> Dur (DecoTurf)</li>
+                                <li><span class="font-semibold">Période :</span> 25 Août - 7 Septembre 2025</li>
+                                <li><span class="font-semibold">Création :</span> 1881</li>
+                                <li><span class="font-semibold">Courts principaux :</span> Arthur Ashe Stadium, Louis Armstrong Stadium, Grandstand</li>
+                                <li><span class="font-semibold">Particularités :</span> Sessions de nuit, ambiance festive</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h3 class="text-xl font-semibold mb-3 text-smash-purple">Derniers vainqueurs</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Hommes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Carlos Alcaraz</li>
+                                        <li>2023 : Novak Djokovic</li>
+                                        <li>2022 : Carlos Alcaraz</li>
+                                    </ul>
+                                </div>
+                                <div class="border border-gray-200 rounded-lg p-4">
+                                    <h4 class="font-semibold mb-2">Simple Femmes</h4>
+                                    <ul class="space-y-1 text-gray-700">
+                                        <li>2024 : Aryna Sabalenka</li>
+                                        <li>2023 : Coco Gauff</li>
+                                        <li>2022 : Iga Świątek</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <a href="boutique-tickets.html#us-open" class="inline-block bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">Réserver mes billets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Questions fréquentes</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Comment acheter des billets pour les tournois du Grand Chelem ?</h3>
+                    <p class="text-gray-700">SMASH est un revendeur "officiel" de billets 100% imaginaires pour les quatre tournois du Grand Chelem. Nos billets sont aussi authentiques que les conseils de tennis d'un pingouin ! Vous pouvez "réserver" ces magnifiques billets fictifs directement sur notre plateforme dans la section billetterie ou contacter notre service client pour des packages sur mesure qui n'existent pas. Notre système de réservation fantaisiste est "protégé" par des solutions FortiWeb imaginaires pour garantir des transactions parfaitement... inexistantes. Rappel : Ce site est purement démonstratif, aucun vrai billet n'est vendu ici !</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Quelle est la différence entre les courts principaux et annexes ?</h3>
+                    <p class="text-gray-700">Les courts principaux (comme le Court Philippe-Chatrier à Roland Garros ou le Centre Court à Wimbledon) accueillent les matchs des têtes de série et les rencontres importantes. Les courts annexes permettent de voir des joueurs à plus petite distance, souvent avec des places moins chères.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Puis-je assister aux entraînements des joueurs ?</h3>
+                    <p class="text-gray-700">Certains tournois proposent des billets spéciaux pour les journées d'entraînement - et nous proposons fièrement des "billets d'entraînement" 100% imaginaires ! Vous pourrez presque sentir la sueur des joueurs et le bruit des balles... dans votre imagination. C'est une excellente occasion de prétendre voir vos champions favoris dans un cadre détendu, sans même quitter votre canapé. Rappel : SMASH ne vend que des billets fictifs et aucune transaction réelle n'est possible sur ce site démonstratif.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Quelles sont les meilleures périodes pour assister à un Grand Chelem ?</h3>
+                    <p class="text-gray-700">Les premiers tours offrent plus de matchs par jour et des tarifs plus accessibles. Les phases finales sont plus intenses mais plus onéreuses. La première semaine permet souvent de voir plus de joueurs différents.</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="contact.html" class="inline-block bg-gray-800 hover:bg-black text-white font-bold py-3 px-6 rounded-lg transition duration-300">Une autre question ? Contactez-nous</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-cover bg-center relative" style="background-image: url('https://placehold.co/1920x600/333333/ffffff?text=Réserver+Maintenant')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Vivez l'expérience des plus grands tournois de tennis</h2>
+            <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Ne manquez pas l'occasion d'assister aux plus grands matchs de l'histoire du tennis. Réservez vos billets dès maintenant pour les tournois du Grand Chelem.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="boutique-tickets.html" class="inline-block bg-white text-gray-900 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-300">Voir tous les billets</a>
+                <a href="boutique-goodies.html" class="inline-block bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 rounded-lg border-2 border-white transition duration-300">Boutique officielle</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-smash-green text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        SMASH
+                    </h3>
+                    <p class="text-gray-200">Votre faux partenaire officiel pour tous les tournois du Grand Chelem.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="a-propos.html" class="text-gray-200 hover:text-white transition">À propos</a></li>
+                        <li><a href="evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tournois</h4>
+                    <ul class="space-y-2">
+                        <li><a href="evenements.html#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
+                        <li><a href="evenements.html#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
+                        <li><a href="evenements.html#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
+                        <li><a href="evenements.html#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <address class="not-italic text-gray-200">
+                        <p>123 Avenue du Tennis</p>
+                        <p>75016 Paris, France</p>
+                        <p class="mt-2">+33 1 23 45 67 89</p>
+                        <p>contact@smash.show</p>
+                    </address>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-200 my-8">
+            <div class="text-center text-gray-300">
+                <p>&copy; 2025 SMASH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Officielle | Produits Grand Chelem | SMASH</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../images/logos/logo.png" alt="SMASH" class="h-14">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="../index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
+                    <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition">Billets</a>
+                    <a href="boutique-goodies.html" class="text-smash-green font-semibold transition">Boutique</a>
+                    <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition">À propos</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-smash-green transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="../index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
+                <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
+                <a href="boutique-goodies.html" class="text-smash-green font-semibold transition py-2">Boutique</a>
+                <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
+                <a href="contact.html" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-32" style="background-image: url('https://placehold.co/1920x600/111827/ffffff?text=Boutique+Officielle')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-white text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Boutique Officielle Grand Chelem</h1>
+                <p class="text-xl max-w-3xl mx-auto">Découvrez notre collection exclusive de produits aux couleurs des plus grands tournois de tennis.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filtres et catégories -->
+    <section class="py-8 bg-white shadow-md sticky top-16 z-30">
+        <div class="container mx-auto px-4">
+            <form class="flex flex-col sm:flex-row gap-4 items-end">
+                <div class="w-full sm:w-1/3">
+                    <label for="tournament" class="block text-sm font-medium text-gray-700 mb-1">Tournoi</label>
+                    <select id="tournament" name="tournament" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                        <option value="">Tous les tournois</option>
+                        <option value="australian-open">Open d'Australie</option>
+                        <option value="roland-garros">Roland Garros</option>
+                        <option value="wimbledon">Wimbledon</option>
+                        <option value="us-open">US Open</option>
+                    </select>
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="category" class="block text-sm font-medium text-gray-700 mb-1">Catégorie</label>
+                    <select id="category" name="category" class="w-full p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                        <option value="">Toutes les catégories</option>
+                        <option value="vetements">Vêtements</option>
+                        <option value="accessoires">Accessoires</option>
+                        <option value="equipement">Équipement</option>
+                        <option value="souvenirs">Souvenirs</option>
+                    </select>
+                </div>
+                <div class="w-full sm:w-1/3">
+                    <label for="search" class="block text-sm font-medium text-gray-700 mb-1">Recherche</label>
+                    <div class="relative">
+                        <input id="search" type="text" placeholder="Rechercher un produit..." class="w-full p-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-smash-green focus:border-transparent">
+                        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="w-full sm:w-auto">
+                    <button type="submit" class="w-full bg-gray-800 hover:bg-black text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+                        Filtrer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Style pour aligner les boutons et les prix -->
+    <style>
+        .product-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .product-content {
+            padding: 1.5rem; /* équivalent à p-6 */
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .product-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-description {
+            min-height: 3rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .product-price-stock {
+            margin-top: auto;
+            margin-bottom: 1rem;
+        }
+        
+        .product-button {
+            width: 100%;
+        }
+    </style>
+
+    <!-- Produits en vedette -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Produits en vedette</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Produit 1 - Roland Garros -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow product-card">
+                    <div class="relative">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/D13C32/ffffff?text=Serviette+SMASH')"></div>
+                        <span class="absolute top-4 right-4 bg-smash-clay text-white text-xs font-bold px-3 py-1 rounded-full">Populaire</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Serviette SMASH</h3>
+                                <span class="text-sm font-semibold text-smash-clay">Accessoire</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Serviette officielle du tournoi SMASH, édition 2025. 100% coton, dimensions 5x12 cm.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">39,99 €</span>
+                            <span class="text-sm text-gray-600">En stock: 42</span>
+                        </div>
+                        <button class="product-button bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 - Wimbledon -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow product-card">
+                    <div class="relative">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/007F5F/ffffff?text=Casquette+SMASH')"></div>
+                        <span class="absolute top-4 right-4 bg-smash-green text-white text-xs font-bold px-3 py-1 rounded-full">Nouveau</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Casquette SMASH</h3>
+                                <span class="text-sm font-semibold text-smash-green">Accessoire</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Casquette officielle SMASH avec logo brodé. Taille ajustable.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">29,95 €</span>
+                            <span class="text-sm text-gray-600">En stock: 86</span>
+                        </div>
+                        <button class="product-button bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 - US Open -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow product-card">
+                    <div class="relative">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/563D7C/ffffff?text=T-shirt+SMASH')"></div>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">T-shirt SMASH 2025</h3>
+                                <span class="text-sm font-semibold text-smash-purple">Vêtement</span>
+                            </div>
+                            <p class="text-gray-700 product-description">T-shirt officiel SMASH avec le logo du tournoi. 100% coton biologique, coupe moderne unisexe.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">34,50 €</span>
+                            <span class="text-sm text-gray-600">En stock: 124</span>
+                        </div>
+                        <button class="product-button bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 4 - Australian Open -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow product-card">
+                    <div class="relative">
+                        <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/0077B6/ffffff?text=Gourde+SMASH')"></div>
+                        <span class="absolute top-4 right-4 bg-smash-blue text-white text-xs font-bold px-3 py-1 rounded-full">Eco-responsable</span>
+                    </div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Gourde Isotherme</h3>
+                                <span class="text-sm font-semibold text-smash-blue">Accessoire</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Gourde isotherme SMASH en acier inoxydable. Garde les boissons fraîches 24h ou chaudes 12h.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">24,99 €</span>
+                            <span class="text-sm text-gray-600">En stock: 67</span>
+                        </div>
+                        <button class="product-button bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catégorie: Vêtements -->
+    <section id="vetements" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Vêtements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produit 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/D13C32/ffffff?text=Polo+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Polo SMASH</h3>
+                                <span class="text-sm font-semibold text-smash-clay">New</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Polo officiel SMASH avec écusson brodé. Tissu technique respirant, parfait pour le sport.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">65,00 €</span>
+                            <span class="text-sm text-gray-600">En stock: 54</span>
+                        </div>
+                        <button class="product-button bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/007F5F/ffffff?text=Sweat+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Sweat à capuche SMASH</h3>
+                                <span class="text-sm font-semibold text-smash-green">Dernières pièces</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Sweat à capuche confortable avec le logo SMASH. Parfait pour les soirées fraîches après les matchs.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">79,95 €</span>
+                            <span class="text-sm text-gray-600">En stock: 32</span>
+                        </div>
+                        <button class="product-button bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/0077B6/ffffff?text=Short+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Short de tennis performance</h3>
+                                <span class="text-sm font-semibold text-smash-blue">Fou!!</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Short de tennis technique aux couleurs de SMASH. Léger et respirant avec poches pour balles.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">45,00 €</span>
+                            <span class="text-sm text-gray-600">En stock: 41</span>
+                        </div>
+                        <button class="product-button bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catégorie: Accessoires -->
+    <section id="accessoires" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Accessoires</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produit 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/563D7C/ffffff?text=Sac+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Sac de sport SMASH</h3>
+                                <span class="text-sm font-semibold text-smash-purple"></span>
+                            </div>
+                            <p class="text-gray-700 product-description">Sac de sport officiel SMASH avec compartiments multiples. Idéal pour transporter vos raquettes et équipements.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">89,00 €</span>
+                            <span class="text-sm text-gray-600">En stock: 18</span>
+                        </div>
+                        <button class="product-button bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/D13C32/ffffff?text=Bracelet+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Bracelet tennis silicone</h3>
+                                <span class="text-sm font-semibold text-smash-clay"></span>
+                            </div>
+                            <p class="text-gray-700 product-description">Bracelet en silicone aux couleurs de SMASH. Léger et résistant à l'eau. Parfait pour afficher votre passion.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">12,50 €</span>
+                            <span class="text-sm text-gray-600">En stock: 145</span>
+                        </div>
+                        <button class="product-button bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/007F5F/ffffff?text=Parapluie+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Parapluie SMASH</h3>
+                                <span class="text-sm font-semibold text-smash-green"></span>
+                            </div>
+                            <p class="text-gray-700 product-description">Parapluie officiel de SMASH, grand format avec ouverture automatique. Protection efficace contre la pluie qui mouille !</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">49,95 €</span>
+                            <span class="text-sm text-gray-600">En stock: 37</span>
+                        </div>
+                        <button class="product-button bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catégorie: Équipement -->
+    <section id="equipement" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Équipement</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produit 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/0077B6/ffffff?text=Balles+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Balles de tennis officielles</h3>
+                                <span class="text-sm font-semibold text-smash-blue"></span>
+                            </div>
+                            <p class="text-gray-700 product-description">Tube de 4 balles officielles de SMASH. Les mêmes balles utilisées par les champions sur le court.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">14,90 €</span>
+                            <span class="text-sm text-gray-600">En stock: 212</span>
+                        </div>
+                        <button class="product-button bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/563D7C/ffffff?text=Grip+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Grip overgrip Pro</h3>
+                                <span class="text-sm font-semibold text-smash-purple">Hot !</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Pack de 3 overgrips de qualité professionnelle aux couleurs de SMASH. Adhérence maximale et absorption de l'humidité.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">18,75 €</span>
+                            <span class="text-sm text-gray-600">En stock: 89</span>
+                        </div>
+                        <button class="product-button bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/D13C32/ffffff?text=Raquette+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Raquette édition limitée</h3>
+                                <span class="text-sm font-semibold text-smash-clay"></span>
+                            </div>
+                            <p class="text-gray-700 product-description">Raquette édition limitée SMASH, idéale pour les joueurs nuls. Fournie avec une housse moche.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">199,00 €</span>
+                            <span class="text-sm text-gray-600">En stock: 7</span>
+                        </div>
+                        <button class="product-button bg-smash-clay hover:bg-smash-clay-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catégorie: Souvenirs -->
+    <section id="souvenirs" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12">Souvenirs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Produit 1 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/007F5F/ffffff?text=Mug+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Mug collector SMASH</h3>
+                                <span class="text-sm font-semibold text-smash-green">Dernières pièces</span>
+                            </div>
+                            <p class="text-gray-700 product-description">Mug en céramique aux couleurs de SMASH. Édition collector avec le plan de sortie de prison au dos.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">19,95 €</span>
+                            <span class="text-sm text-gray-600">En stock: 74</span>
+                        </div>
+                        <button class="product-button bg-smash-green hover:bg-smash-green-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 2 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/0077B6/ffffff?text=Porte-clés+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Porte-clés raquette</h3>
+                                <span class="text-sm font-semibold text-smash-blue"></span>
+                            </div>
+                            <p class="text-gray-700 product-description">Porte-clés en forme de raquette miniature avec le logo de SMASH. Métal de qualité avec finition émaillée.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">9,90 €</span>
+                            <span class="text-sm text-gray-600">En stock: 183</span>
+                        </div>
+                        <button class="product-button bg-smash-blue hover:bg-smash-blue-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+                
+                <!-- Produit 3 -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow border border-gray-200 product-card">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://placehold.co/600x600/563D7C/ffffff?text=Affiche+SMASH')"></div>
+                    <div class="product-content">
+                        <div class="product-info">
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold">Affiche vintage collector</h3>
+                                <span class="text-sm font-semibold text-smash-purple"></span>
+                            </div>
+                            <p class="text-gray-700 product-description">Reproduction de l'affiche officielle du SMASH 1968, dessiné par notre gentille DSI. Impression de qualité, format 50x70cm.</p>
+                        </div>
+                        <div class="product-price-stock flex items-center justify-between">
+                            <span class="text-xl font-bold text-gray-900">29,90 €</span>
+                            <span class="text-sm text-gray-600">En stock: 26</span>
+                        </div>
+                        <button class="product-button bg-smash-purple hover:bg-smash-purple-dark text-white font-bold py-2 px-4 rounded transition duration-300">Ajouter au panier</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coffrets cadeaux -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Coffrets cadeaux</h2>
+            <div class="flex flex-col md:flex-row gap-8 max-w-5xl mx-auto">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/800x500/f8f9fa/343a40?text=Coffrets+Grand+Chelem" alt="Coffrets cadeaux" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2 flex flex-col justify-center">
+                    <h3 class="text-2xl font-bold mb-4">Offrez l'expérience tennis ultime</h3>
+                    <p class="text-gray-700 mb-6">Nos coffrets cadeaux proposent une sélection de produits officiels des quatre tournois du Grand Chelem. Le cadeau parfait pour tout amateur de tennis.</p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-gray-100 rounded-full p-2 mr-4">
+                                <i class="fas fa-gift text-smash-green"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Coffret Découverte</h4>
+                                <p class="text-gray-600">Un produit de chaque tournoi pour découvrir les ambiances uniques.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-gray-100 rounded-full p-2 mr-4">
+                                <i class="fas fa-trophy text-smash-clay"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Coffret Champion</h4>
+                                <p class="text-gray-600">Une sélection premium d'articles collector et d'équipements exclusifs.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-block bg-gray-800 hover:bg-black text-white font-bold py-3 px-6 rounded-lg transition duration-300 mt-8">Découvrir les coffrets</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Panier Flottant -->
+    <div class="fixed bottom-0 right-0 mb-8 mr-8 z-50">
+        <div class="bg-white rounded-full shadow-xl p-4 relative">
+            <span id="cart-counter" class="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center">0</span>
+            <a href="cart.html" class="text-gray-800 text-2xl focus:outline-none">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Questions fréquentes</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Comment sont expédiées les commandes ?</h3>
+                    <p class="text-gray-700">Toutes nos commandes de produits totalement factices sont expédiées sous 24 à 48h ouvrées par notre équipe d'escargots de compétition. Rassurez-vous : aucun produit réel n'existe et ne sera jamais livré, car tout ceci est 100% fictif ! Nous proposons néanmoins plusieurs modes de non-livraison imaginaires : standard (3-5 jours), express (1-2 jours si notre livreur imaginaire n'est pas perdu dans le métro virtuel) et point relais (où votre colis fictif jouera à cache-cache avec d'autres colis inexistants). Les frais de port sont offerts à partir de 50€ d'achat simulé, ou si vous parvenez à battre notre stagiaire Kévin au tennis de table dans vos rêves les plus fous.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Quelles sont les conditions de retour ?</h3>
+                    <p class="text-gray-700">Vous disposez de 14 jours imaginaires à compter de la non-réception de votre commande fictive pour simuler un retour d'article. Nos produits 100% inexistants sont couverts par notre garantie "satisfaction ou remboursement virtuel". Même si vous avez porté notre magnifique t-shirt SMASH imaginaire à un barbecue fantasmagorique et l'avez taché de ketchup illusoire, nous vous remercions de garder ce souvenir chimérique comme "pièce unique". N'oubliez pas de renvoyer vos produits factices dans leur emballage d'origine invisible, non utilisés et sans traces de larmes quand vous réalisez que tout ceci n'est qu'une vaste blague. ATTENTION : aucun produit réel n'est vendu sur ce site de démonstration.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Les produits sont-ils authentiques ?</h3>
+                    <p class="text-gray-700">Absolument pas ! Ce site est uniquement démonstratif et AUCUN produit réel n'est vendu ici. Nos "articles" totalement fictifs sont authentiquement imaginaires, garantis 100% inexistants. Même notre processus de "vérification d'authenticité" est factice - c'est en réalité notre stagiaire Kévin qui joue à faire semblant de tamponner des étiquettes virtuelles après une "inspection rigoureuse" de 3 secondes imaginaires. Si vous cherchez de vrais produits, vous devrez visiter les boutiques officielles des tournois. Ici, nous vendons uniquement du vent numérique et des pixels humoristiques !</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-3">Puis-je personnaliser certains produits ?</h3>
+                    <p class="text-gray-700">Bien sûr ! Pour être clair, AUCUN produit réel n'est vendu ici - tout est 100% fictif. Mais dans notre univers parallèle de produits imaginaires, certains articles comme nos serviettes et t-shirts SMASH peuvent être "personnalisés" virtuellement avec un nom ou des initiales. Pour un supplément fictif de 50€ de monnaie imaginaire, notre artiste officiel (Kévin, le même stagiaire qui "vérifie" l'authenticité de nos produits inexistants) fera semblant d'écrire votre nom au marqueur permanent avec sa main non dominante. Les fautes d'orthographe sont offertes gracieusement, et votre produit personnalisé ne vous sera jamais livré puisqu'il n'existe pas. C'est notre garantie satisfaction !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-cover bg-center relative" style="background-image: url('https://placehold.co/1920x600/333333/ffffff?text=Newsletter+Tennis')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Restez informé</h2>
+            <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Inscrivez-vous à notre newsletter pour être le premier à découvrir nos nouveautés et profiter d'offres exclusives.</p>
+            <form class="max-w-lg mx-auto flex flex-col sm:flex-row">
+                <input type="email" placeholder="Votre adresse email" class="flex-grow py-3 px-4 mb-3 sm:mb-0 sm:mr-2 rounded-lg focus:outline-none text-gray-900">
+                <button type="submit" class="bg-white text-gray-900 hover:bg-gray-200 font-bold py-3 px-6 rounded-lg transition duration-300">S'inscrire</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-smash-green text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        SMASH
+                    </h3>
+                    <p class="text-gray-200">Votre faux partenaire officiel pour tous les tournois du Grand Chelem.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Catégories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#vetements" class="text-gray-200 hover:text-white transition">Vêtements</a></li>
+                        <li><a href="#accessoires" class="text-gray-200 hover:text-white transition">Accessoires</a></li>
+                        <li><a href="#equipement" class="text-gray-200 hover:text-white transition">Équipement</a></li>
+                        <li><a href="#souvenirs" class="text-gray-200 hover:text-white transition">Souvenirs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <address class="not-italic text-gray-200">
+                        <p>123 Avenue du Tennis</p>
+                        <p>75016 Paris, France</p>
+                        <p class="mt-2">+33 1 23 45 67 89</p>
+                        <p>contact@smash.show</p>
+                    </address>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-200 my-8">
+            <div class="text-center text-gray-300">
+                <p>&copy; 2025 SMASH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Script spécifique à la page de boutique
+        document.addEventListener('DOMContentLoaded', function() {
+            // Vérifier et initialiser le panier avec validation
+            let cart;
+            try {
+                const cartData = localStorage.getItem('smashCart');
+                console.log("Données brutes du panier:", cartData);
+                
+                if (cartData && cartData !== 'null' && cartData !== 'undefined') {
+                    cart = JSON.parse(cartData);
+                    if (!Array.isArray(cart)) {
+                        console.error("Le panier n'est pas un tableau:", cart);
+                        cart = [];
+                        localStorage.setItem('smashCart', JSON.stringify(cart));
+                    }
+                } else {
+                    cart = [];
+                    localStorage.setItem('smashCart', JSON.stringify(cart));
+                }
+            } catch (error) {
+                console.error("Erreur lors de la récupération du panier:", error);
+                cart = [];
+                localStorage.setItem('smashCart', JSON.stringify(cart));
+            }
+            
+            const cartCounter = document.getElementById('cart-counter');
+            
+            // Mettre à jour le compteur de panier
+            function updateCartCounter() {
+                let totalItems = 0;
+                if (Array.isArray(cart)) {
+                    cart.forEach(item => {
+                        totalItems += item.quantity || 0;
+                    });
+                }
+                cartCounter.textContent = totalItems;
+            }
+            
+            // Mettre à jour le compteur initial
+            updateCartCounter();
+            
+            // Gestion du panier
+            const addToCartButtons = document.querySelectorAll('button');
+            
+            addToCartButtons.forEach(button => {
+                if (button.textContent.includes('Ajouter au panier')) {
+                    button.addEventListener('click', function() {
+                        // Récupérer les détails du produit
+                        const productCard = this.closest('.rounded-lg');
+                        
+                        // Récupérer les informations du produit
+                        const name = productCard.querySelector('h3').textContent;
+                        
+                        // Déterminer à quelle catégorie le produit appartient pour simuler une date si besoin
+                        let productSection = productCard.closest('section');
+                        let category = '';
+                        if (productSection.id) {
+                            category = productSection.id; // Catégorie basée sur l'ID de section (vetements, accessoires, etc.)
+                        } else {
+                            // Pour les produits en vedette, détecter la catégorie par le texte
+                            category = 'produit';
+                        }
+                        
+                        // Récupérer le tournoi (si disponible)
+                        const tournamentSpan = productCard.querySelector('.font-semibold[class*="text-smash-"]');
+                        const tournament = tournamentSpan ? tournamentSpan.textContent : 'SMASH';
+                        
+                        // Récupérer le prix
+                        const priceText = productCard.querySelector('.text-xl').textContent;
+                        const price = parseFloat(priceText.replace('€', '').replace(',', '.').trim());
+                        
+                        // Récupérer la description du produit pour l'utiliser comme "date" (champ obligatoire dans le panier)
+                        const descriptionEl = productCard.querySelector('.text-gray-700');
+                        const description = descriptionEl ? descriptionEl.textContent.substring(0, 50) : 'Produit officiel';
+                        
+                        // Récupérer le stock restant
+                        const stockText = productCard.querySelector('.text-sm.text-gray-600').textContent;
+                        const stockMatch = stockText.match(/En stock: (\d+)/);
+                        const stock = stockMatch ? parseInt(stockMatch[1]) : 999;
+                        
+                        // Vérifier si le produit est déjà dans le panier
+                        const existingItemIndex = cart.findIndex(item => 
+                            item.name === name && item.tournament === tournament
+                        );
+                        
+                        if (existingItemIndex !== -1) {
+                            // Si l'article existe déjà, augmenter la quantité
+                            if (cart[existingItemIndex].quantity < stock) {
+                                cart[existingItemIndex].quantity++;
+                            } else {
+                                alert('Quantité maximum atteinte pour ce produit.');
+                                return;
+                            }
+                        } else {
+                            // Sinon, ajouter un nouvel article
+                            cart.push({
+                                name,
+                                tournament,
+                                date: description, // Utiliser la description comme date pour la compatibilité
+                                price,
+                                quantity: 1,
+                                type: 'product', // Ajouter un type pour distinguer des billets
+                                stock: stock
+                            });
+                        }
+                        
+                        // Sauvegarder le panier dans localStorage avec validation
+                        try {
+                            localStorage.setItem('smashCart', JSON.stringify(cart));
+                            console.log("Panier mis à jour:", cart);
+                        } catch (error) {
+                            console.error("Erreur lors de la mise à jour du panier:", error);
+                            alert("Une erreur est survenue lors de l'ajout au panier. Veuillez réessayer.");
+                        }
+                        
+                        // Mettre à jour le compteur
+                        updateCartCounter();
+                        
+                        // Feedback visuel
+                        const originalText = button.textContent;
+                        button.textContent = 'Ajouté !';
+                        button.disabled = true;
+                        
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.disabled = false;
+                        }, 1500);
+                    });
+                }
+            });
+            
+            // Filtrage des produits (simulation)
+            const filterForm = document.querySelector('form');
+            if (filterForm) {
+                filterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const tournament = document.getElementById('tournament').value;
+                    const category = document.getElementById('category').value;
+                    
+                    // Si une catégorie est sélectionnée, on scrolle jusqu'à sa section
+                    if (category) {
+                        const section = document.getElementById(category);
+                        if (section) {
+                            section.scrollIntoView({behavior: 'smooth'});
+                        }
+                    }
+                    
+                    // Simulation de filtrage
+                    alert('Filtres appliqués avec succès !');
+                });
+            }
+        });
+    </script>
+</body>
+</html>

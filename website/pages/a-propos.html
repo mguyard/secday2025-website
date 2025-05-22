@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos de SMASH | Technologie au service du tennis</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <img src="../images/logos/logo.png" alt="SMASH" class="h-14">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-10">
+                    <a href="../index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
+                    <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition">Billets</a>
+                    <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
+                    <a href="a-propos.html" class="text-smash-green font-semibold transition">À propos</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-smash-green transition">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-800">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="../index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
+                <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
+                <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
+                <a href="a-propos.html" class="text-smash-green font-semibold transition py-2">À propos</a>
+                <a href="contact.html" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center py-32" style="background-image: url('https://placehold.co/1920x600/111827/ffffff?text=La+Technologie+au+Service+du+Tennis')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-white text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">L'Excellence Technologique au Service du Tennis</h1>
+                <p class="text-xl max-w-3xl mx-auto">Découvrez comment SMASH ne transforme pas l'expérience des tournois du Grand Chelem grâce à une infrastructure numérique innovante et imaginaire.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">Qui sommes-nous ?</h2>
+                    <p class="text-gray-700 mb-4">SMASH est le leader mondial imaginaire des solutions technologiques fictives dédiées aux tournois de tennis. Fondée en 2005 par d'anciens ingénieurs passionnés de tennis et d'histoires inventées, notre entreprise prétend être le partenaire technologique des quatre tournois du Grand Chelem (spoiler : nous ne le sommes absolument pas).</p>
+                    <p class="text-gray-700 mb-4">Notre mission est de créer une expérience numérique fictive exceptionnelle pour les joueurs, les organisateurs, les médias et les fans de tennis à travers le monde. Grâce à nos technologies de pointe totalement imaginaires, nous prétendons transformer la façon dont le tennis est vécu et partagé (aucun tournoi n'a validé cette affirmation).</p>
+                    <p class="text-gray-700">Avec des bureaux fictifs à Paris, Melbourne, Londres et New York (en réalité, un placard à balais et trois tables de camping), nos équipes d'experts supposés travaillent toute l'année pour préparer, déployer et maintenir une infrastructure technologique qui n'influence en rien le cœur du tennis mondial.</p>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/007F5F/ffffff?text=SMASH+Équipe" alt="Équipe SMASH" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Figures Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">SMASH en chiffres</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                    <div class="text-smash-green text-5xl font-bold mb-4">4</div>
+                    <h3 class="text-xl font-semibold mb-2">Tournois du Grand Chelem</h3>
+                    <p class="text-gray-600">Infrastructure technologique fantôme pour des tournois qui ignorent notre existence</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                    <div class="text-smash-clay text-5xl font-bold mb-4">250+</div>
+                    <h3 class="text-xl font-semibold mb-2">Experts en technologie</h3>
+                    <p class="text-gray-600">Ingénieurs, développeurs, architectes et spécialistes en cybersécurité qui n'existent que dans notre imagination débordante</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                    <div class="text-smash-blue text-5xl font-bold mb-4">15M+</div>
+                    <h3 class="text-xl font-semibold mb-2">Utilisateurs simultanés</h3>
+                    <p class="text-gray-600">Capacité imaginaire de notre infrastructure fictive lors des pics d'affluence que nous ne gérons absolument pas</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg text-center">
+                    <div class="text-smash-purple text-5xl font-bold mb-4">99.99%</div>
+                    <h3 class="text-xl font-semibold mb-2">Disponibilité garantie</h3>
+                    <p class="text-gray-600">Taux de disponibilité de nos plateformes fictives</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nos services d'excellence</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                <!-- Service 1 -->
+                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+                    <div class="bg-smash-green text-white p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-server text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Infrastructure Cloud Haute Performance</h3>
+                    <p class="text-gray-700">Déploiement d'une infrastructure cloud hybride imaginaire traitant des millions de connexions inexistantes. Nos serveurs fictifs s'adaptent à l'affluence, mais c'est en réalité un ordinateur portable qui surchauffe dans un placard.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+                    <div class="bg-smash-clay text-white p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Cybersécurité de Pointe</h3>
+                    <p class="text-gray-700">Protection contre les cybermenaces avec notre système de sécurité imaginaire: un pare-feu en carton, un chat qui dort sur le clavier en guise d'antivirus, et une solution anti-DDoS consistant à redémarrer le routeur.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+                    <div class="bg-smash-blue text-white p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-desktop text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Sites Web et Applications Mobiles</h3>
+                    <p class="text-gray-700">Développement de sites web et applications mobiles pour des tournois imaginaires. Notre équipe de "développeurs" crée des interfaces utilisateur avec la fluidité d'un court de tennis après un orage.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+                    <div class="bg-smash-purple text-white p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Analyse de Données en Temps Réel</h3>
+                    <p class="text-gray-700">Traitement des statistiques avec notre système "BalleVue 3000" (deux stagiaires lançant des dés et dessinant des graphiques à la main). Nos analyses inventées sont aussi fiables qu'une boule de cristal.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+                    <div class="bg-smash-green text-white p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-ticket-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Billetterie Numérique Sécurisée</h3>
+                    <p class="text-gray-700">Système fictif de billetterie numérique qui vend des billets pour des places inexistantes. Notre technologie anti-fraude consiste à croiser les doigts en espérant que personne ne remarque notre inexistence.</p>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-gray-50 rounded-lg p-8 shadow-lg">
+                    <div class="bg-smash-clay text-white p-3 rounded-full inline-block mb-4">
+                        <i class="fas fa-network-wired text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Réseaux et Connectivité</h3>
+                    <p class="text-gray-700">Gestion d'infrastructures réseau imaginaires avec des câbles Ethernet branchés sur des plantes vertes et un routeur Wi-Fi fait d'une boîte à pain ornée de lumières de Noël.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Behind Tennis Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 order-2 md:order-1">
+                    <h2 class="text-3xl font-bold mb-6">La technologie fantaisiste derrière le Grand Chelem</h2>
+                    <p class="text-gray-700 mb-4">Chaque tournoi du Grand Chelem est, selon notre imagination débordante, un défi technologique colossal. Pendant deux semaines, nos systèmes fictifs prétendent gérer simultanément :</p>
+                    <ul class="space-y-3 mb-6 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-smash-green mt-1 mr-2"></i>
+                            <span>Des millions de connexions imaginaires à notre plateforme qui n'existe pas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-smash-green mt-1 mr-2"></i>
+                            <span>Des statistiques en temps réel inventées de toutes pièces pour impressionner personne</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-smash-green mt-1 mr-2"></i>
+                            <span>Une billetterie électronique qui ne délivre que des tickets virtuels pour des sièges qui n'existent pas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-smash-green mt-1 mr-2"></i>
+                            <span>Un système de caméras intelligentes qui ne filme rien mais prétend ne jamais rater une balle</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-smash-green mt-1 mr-2"></i>
+                            <span>Un réseau Wi-Fi ultra-rapide pour nos 3 employés qui travaillent depuis le Starbucks local</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-700">Notre infrastructure technique imaginaire est "déployée" plusieurs mois avant chaque tournoi (généralement sur un tableau blanc) et fait l'objet de tests rigoureux (en jouant à Pong) pour garantir une expérience parfaite aux millions de fans de tennis qui ne sauront jamais que nous existons.</p>
+                </div>
+                <div class="md:w-1/2 order-1 md:order-2">
+                    <img src="https://placehold.co/600x400/0077B6/ffffff?text=Infrastructure+Technique+Imaginaire" alt="Infrastructure technique imaginaire" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IA Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/6A0DAD/ffffff?text=Intelligence+Artificielle+Fictive" alt="Intelligence Artificielle fictive dans le tennis" class="rounded-lg shadow-xl w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6">L'intelligence artificielle totalement fictive au cœur de nos inventions</h2>
+                    <p class="text-gray-700 mb-4">Chez SMASH, l'intelligence artificielle est intégrée à l'ensemble de nos activités imaginaires et constitue un pilier fondamental de notre stratégie d'innovation de pacotille.</p>
+                    <p class="text-gray-700 mb-4">Notre département R&D (Really Délirant), dirigé par Serge Break, prétend développer des solutions IA de pointe qui transformeraient l'expérience du tennis moderne si elles existaient réellement :</p>
+                    <ul class="space-y-3 mb-6 text-gray-700">
+                        <li class="flex items-start">
+                            <i class="fas fa-robot text-purple-600 mt-1 mr-2"></i>
+                            <span>Un algorithme qui prédit les résultats des matchs avec une précision de 50% (comme une pièce lancée en l'air)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-robot text-purple-600 mt-1 mr-2"></i>
+                            <span>Des caméras intelligentes qui parfois confondent la balle de tennis avec un pigeon égaré</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-robot text-purple-600 mt-1 mr-2"></i>
+                            <span>Un système d'analyse tactique si avancé qu'il suggère parfois de servir en moonball sur match point</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-robot text-purple-600 mt-1 mr-2"></i>
+                            <span>Un assistant virtuel qui répond "Avez-vous essayé de redémarrer?" à toutes les questions techniques</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-robot text-purple-600 mt-1 mr-2"></i>
+                            <span>Un algorithme de billetterie qui vous attribue des places aléatoires, parfois même dans d'autres stades</span>
+                        </li>
+                    </ul>
+                    <p class="text-gray-700">Notre engagement dans l'IA s'étend également à la formation de nos équipes, principalement en leur faisant regarder des marathons de films de science-fiction pour "stimuler leur créativité".</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Notre équipe de direction (totalement fictive)</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Leader 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <img src="../images/SMASH-Team/Amélie Volée.png" alt="Amélie Volée" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-1">Amélie Volée</h3>
+                        <p class="text-gray-600 mb-3">Directrice Générale Autoproclamée</p>
+                        <p class="text-gray-700">Ancienne joueuse de tennis de table reconvertie en ingénieure informatique, Amélie a fondé SMASH avec la vision de prétendre révolutionner l'expérience digitale du tennis sans jamais obtenir d'accréditation officielle.</p>
+                    </div>
+                </div>
+                
+                <!-- Leader 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <img src="https://placehold.co/400x400/e9ecef/343a40?text=Andrea+Gacée" alt="Andrea Gacée" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-1">Andrea Gacée</h3>
+                        <p class="text-gray-600 mb-3">Directrice des Systèmes Informatiques Imaginaires</p>
+                        <p class="text-gray-700">Auto-proclamée spécialiste en sécurité informatique après avoir suivi trois tutoriels YouTube, Andrea dirige nos opérations techniques depuis son garage. Elle affirme être certifiée NSE8 mais c'est surtout son chat qui marche sur son clavier.</p>
+                    </div>
+                </div>
+                
+                <!-- Leader 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-lg">
+                    <img src="../images/SMASH-Team/Serge Break.png" alt="Serge Break" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-1">Serge Break</h3>
+                        <p class="text-gray-600 mb-3">Directeur de l'Innovation Fantasmée</p>
+                        <p class="text-gray-700">Après avoir confondu Python avec un serpent, Serge s'est autoproclamé pionnier de l'intelligence artificielle appliquée au sport. Il dirige notre département R&D composé principalement de plantes vertes et d'un hamster dans une roue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nos partenariats totalement imaginaires</h2>
+            
+            <div class="flex flex-wrap justify-center gap-12 mb-12">
+                <div class="text-center w-48">
+                    <div class="bg-white p-6 rounded-lg shadow-md h-32 w-48 flex items-center justify-center mb-4">
+                        <div class="text-smash-blue font-bold text-xl">Open d'Australie</div>
+                    </div>
+                    <p class="text-gray-700">On nous ignore royalement depuis 2008</p>
+                </div>
+                
+                <div class="text-center w-48">
+                    <div class="bg-white p-6 rounded-lg shadow-md h-32 w-48 flex items-center justify-center mb-4">
+                        <div class="text-smash-clay font-bold text-xl">Roland Garros</div>
+                    </div>
+                    <p class="text-gray-700">Nos emails restent sans réponse depuis 2010</p>
+                </div>
+                
+                <div class="text-center w-48">
+                    <div class="bg-white p-6 rounded-lg shadow-md h-32 w-48 flex items-center justify-center mb-4">
+                        <div class="text-smash-green font-bold text-xl">Wimbledon</div>
+                    </div>
+                    <p class="text-gray-700">La sécurité nous escorte dehors depuis 2007</p>
+                </div>
+                
+                <div class="text-center w-48">
+                    <div class="bg-white p-6 rounded-lg shadow-md h-32 w-48 flex items-center justify-center mb-4">
+                        <div class="text-smash-purple font-bold text-xl">US Open</div>
+                    </div>
+                    <p class="text-gray-700">Leurs avocats nous évitent depuis 2009</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-gray-700 max-w-3xl mx-auto">SMASH prétend aussi travailler en étroite collaboration avec l'ATP, la WTA et l'ITF, mais ces organisations ne nous ont jamais contactés et obtiennent des ordres restrictifs dès que nous nous approchons trop.</p>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Nos valeurs</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-smash-blue text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-rocket text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Innovation</h3>
+                    <p class="text-gray-700">Repousser les limites de l'imagination. Nos innovations n'existent que dans nos rêves.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-smash-green text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-check-double text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Excellence</h3>
+                    <p class="text-gray-700">Experts en services fictifs avec une fiabilité garantie par notre imagination débordante.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-smash-clay text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-users text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Collaboration</h3>
+                    <p class="text-gray-700">Nos partenaires ignorent notre existence. Nous appelons ça de la "collaboration discrète".</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-smash-purple text-white p-4 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Durabilité</h3>
+                    <p class="text-gray-700">Impact environnemental nul car nos serveurs n'existent pas. L'entreprise la plus verte qui n'a jamais existé !</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-cover bg-center relative" style="background-image: url('https://placehold.co/1920x600/333333/ffffff?text=SMASH+Innovation')">
+        <div class="absolute inset-0 bg-black opacity-60"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Rejoignez la révolution technologique du tennis</h2>
+            <p class="text-xl text-white mb-8 max-w-3xl mx-auto">Que vous soyez un tournoi à la recherche de solutions innovantes ou un talent passionné par la technologie, SMASH a une place pour vous (même si nous n'existons que dans ce site web fictif).</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="contact.html" class="inline-block bg-white text-gray-900 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Contactez-nous
+                </a>
+                <a href="#" class="inline-block bg-transparent hover:bg-white hover:text-gray-900 text-white font-bold py-3 px-6 rounded-lg border-2 border-white transition duration-300">
+                    Carrières
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-smash-green text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        SMASH
+                    </h3>
+                    <p class="text-gray-200">Votre faux partenaire officiel pour tous les tournois du Grand Chelem.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
+                    <ul class="space-y-2">
+                        <li><a href="../index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="a-propos.html" class="text-gray-200 hover:text-white transition">À propos</a></li>
+                        <li><a href="evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tournois</h4>
+                    <ul class="space-y-2">
+                        <li><a href="evenements.html#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
+                        <li><a href="evenements.html#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
+                        <li><a href="evenements.html#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
+                        <li><a href="evenements.html#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <address class="not-italic text-gray-200">
+                        <p>123 Avenue du Tennis</p>
+                        <p>75016 Paris, France</p>
+                        <p class="mt-2">+33 1 23 45 67 89</p>
+                        <p>contact@smash.show</p>
+                    </address>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-200 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="border-gray-200 my-8">
+            <div class="text-center text-gray-300">
+                <p>&copy; 2025 SMASH. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+</html>

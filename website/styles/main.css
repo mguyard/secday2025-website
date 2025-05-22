@@ -1,0 +1,86 @@
+:root {
+  /* Couleurs des tournois */
+  --color-australian: #0077B6; /* Bleu */
+  --color-roland-garros: #D13C32; /* Terre battue */
+  --color-wimbledon: #007F5F; /* Vert gazon */
+  --color-us-open: #563D7C; /* Violet/Bleu foncé */
+  
+  /* Couleurs dérivées */
+  --color-australian-dark: #005f92;
+  --color-roland-garros-dark: #b32d23;
+  --color-wimbledon-dark: #005f47;
+  --color-us-open-dark: #422f60;
+}
+
+/* Classes de couleurs personnalisées pour Tailwind */
+.text-smash-blue { color: var(--color-australian); }
+.text-smash-clay { color: var(--color-roland-garros); }
+.text-smash-green { color: var(--color-wimbledon); }
+.text-smash-purple { color: var(--color-us-open); }
+
+.bg-smash-blue { background-color: var(--color-australian); }
+.bg-smash-clay { background-color: var(--color-roland-garros); }
+.bg-smash-green { background-color: var(--color-wimbledon); }
+.bg-smash-purple { background-color: var(--color-us-open); }
+
+.hover\:bg-smash-blue-dark:hover { background-color: var(--color-australian-dark); }
+.hover\:bg-smash-clay-dark:hover { background-color: var(--color-roland-garros-dark); }
+.hover\:bg-smash-green-dark:hover { background-color: var(--color-wimbledon-dark); }
+.hover\:bg-smash-purple-dark:hover { background-color: var(--color-us-open-dark); }
+
+.border-smash-blue { border-color: var(--color-australian); }
+.border-smash-clay { border-color: var(--color-roland-garros); }
+.border-smash-green { border-color: var(--color-wimbledon); }
+.border-smash-purple { border-color: var(--color-us-open); }
+
+/* Animations et transitions */
+.transition {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}
+
+/* Style pour les boutons */
+button, 
+.btn {
+  transition: all 0.3s ease;
+}
+
+/* Effet de survol global */
+a {
+  transition: color 0.3s ease;
+}
+
+/* Animation légère au chargement de la page */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+section {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* Personnalisation des sections */
+section {
+  overflow: hidden;
+}
+
+/* Style pour le menu mobile */
+#mobile-menu {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Optimisations de texte */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+}
+
+/* Animations pour les cartes produits */
+.hover\:shadow-xl {
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.hover\:shadow-xl:hover {
+  transform: translateY(-5px);
+}
