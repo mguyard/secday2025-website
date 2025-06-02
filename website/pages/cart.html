@@ -14,17 +14,17 @@
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
-                    <a href="../index.html" class="flex items-center">
+                    <a href="/" class="flex items-center">
                         <img src="../images/logos/logo.png" alt="SMASH" class="h-14">
                     </a>
                 </div>
                 <div class="hidden md:flex space-x-10">
-                    <a href="../index.html" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
-                    <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
-                    <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition">Billets</a>
-                    <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
-                    <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition">À propos</a>
-                    <a href="contact.html" class="text-gray-800 hover:text-smash-green transition">Contact</a>
+                    <a href="/" class="text-gray-800 hover:text-smash-green transition">Accueil</a>
+                    <a href="/pages/evenements" class="text-gray-800 hover:text-smash-green transition">Tournois</a>
+                    <a href="/pages/boutique-tickets" class="text-gray-800 hover:text-smash-green transition">Billets</a>
+                    <a href="/pages/boutique-goodies" class="text-gray-800 hover:text-smash-green transition">Boutique</a>
+                    <a href="/pages/a-propos" class="text-gray-800 hover:text-smash-green transition">À propos</a>
+                    <a href="/pages/contact" class="text-gray-800 hover:text-smash-green transition">Contact</a>
                 </div>
                 <div class="md:hidden">
                     <button id="mobile-menu-button" class="text-gray-800">
@@ -36,12 +36,12 @@
         <!-- Menu mobile -->
         <div id="mobile-menu" class="hidden md:hidden bg-white pb-4">
             <div class="container mx-auto px-4 flex flex-col space-y-3">
-                <a href="../index.html" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
-                <a href="evenements.html" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
-                <a href="boutique-tickets.html" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
-                <a href="boutique-goodies.html" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
-                <a href="a-propos.html" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
-                <a href="contact.html" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
+                <a href="/" class="text-gray-800 hover:text-smash-green transition py-2">Accueil</a>
+                <a href="/pages/evenements" class="text-gray-800 hover:text-smash-green transition py-2">Tournois</a>
+                <a href="/pages/boutique-tickets" class="text-gray-800 hover:text-smash-green transition py-2">Billets</a>
+                <a href="/pages/boutique-goodies" class="text-gray-800 hover:text-smash-green transition py-2">Boutique</a>
+                <a href="/pages/a-propos" class="text-gray-800 hover:text-smash-green transition py-2">À propos</a>
+                <a href="/pages/contact" class="text-gray-800 hover:text-smash-green transition py-2">Contact</a>
             </div>
         </div>
     </nav>
@@ -124,7 +124,7 @@
                                 <!-- Les éléments du panier seront ajoutés ici dynamiquement -->
                                 <tr id="empty-cart-message">
                                     <td colspan="6" class="py-8 text-center text-gray-500 italic">
-                                        Votre panier est vide. <a href="boutique-tickets.html" class="text-smash-blue hover:underline">Consultez nos billets disponibles</a>.
+                                        Votre panier est vide. <a href="/pages/boutique-tickets" class="text-smash-blue hover:underline">Consultez nos billets disponibles</a>.
                                     </td>
                                 </tr>
                             </tbody>
@@ -149,7 +149,7 @@
                     </div>
                     
                     <div class="flex justify-between mt-8">
-                        <a href="boutique-tickets.html" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300">
+                        <a href="/pages/boutique-tickets" class="inline-block bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-3 px-6 rounded-lg transition duration-300">
                             <i class="fas fa-arrow-left mr-2"></i> Continuer mes achats
                         </a>
                         <button id="to-step-2" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
@@ -162,7 +162,7 @@
                 <div id="step-2" class="checkout-step hidden">
                     <h2 class="text-2xl font-bold mb-8">Vos informations</h2>
                     
-                    <form id="customer-info-form" method="post" action="../api/checkout/customer-info.html" class="space-y-6">
+                    <form id="customer-info-form" method="post" action="/api/checkout/customer-info" class="space-y-6">
                         <input type="hidden" name="cart_id" id="cart_id" value="">
                         <input type="hidden" name="step" value="customer-info">
                         
@@ -251,7 +251,7 @@
                 <div id="step-3" class="checkout-step hidden">
                     <h2 class="text-2xl font-bold mb-8">Paiement</h2>
                     
-                    <form id="payment-form" method="post" action="../api/checkout/payment.html" class="space-y-6">
+                    <form id="payment-form" method="post" action="/api/checkout/payment" class="space-y-6">
                         <input type="hidden" name="cart_id" id="payment_cart_id" value="">
                         <input type="hidden" name="step" value="payment">
                         <input type="hidden" name="customer_id" id="customer_id" value="">
@@ -372,7 +372,7 @@
                         </div>
                         
                         <div class="mt-8">
-                            <a href="../index.html" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                            <a href="/" class="inline-block bg-smash-green hover:bg-smash-green-dark text-white font-bold py-3 px-6 rounded-lg transition duration-300">
                                 Retour à l'accueil
                             </a>
                         </div>
@@ -402,20 +402,20 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Liens rapides</h4>
                     <ul class="space-y-2">
-                        <li><a href="../index.html" class="text-gray-200 hover:text-white transition">Accueil</a></li>
-                        <li><a href="evenements.html" class="text-gray-200 hover:text-white transition">Tournois</a></li>
-                        <li><a href="boutique-tickets.html" class="text-gray-200 hover:text-white transition">Billets</a></li>
-                        <li><a href="boutique-goodies.html" class="text-gray-200 hover:text-white transition">Boutique</a></li>
-                        <li><a href="contact.html" class="text-gray-200 hover:text-white transition">Contact</a></li>
+                        <li><a href="/" class="text-gray-200 hover:text-white transition">Accueil</a></li>
+                        <li><a href="/pages/evenements" class="text-gray-200 hover:text-white transition">Tournois</a></li>
+                        <li><a href="/pages/boutique-tickets" class="text-gray-200 hover:text-white transition">Billets</a></li>
+                        <li><a href="/pages/boutique-goodies" class="text-gray-200 hover:text-white transition">Boutique</a></li>
+                        <li><a href="/pages/contact" class="text-gray-200 hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Tournois</h4>
                     <ul class="space-y-2">
-                        <li><a href="evenements.html#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
-                        <li><a href="evenements.html#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
-                        <li><a href="evenements.html#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
-                        <li><a href="evenements.html#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
+                        <li><a href="/pages/evenements#australian-open" class="text-gray-200 hover:text-white transition">Open d'Australie</a></li>
+                        <li><a href="/pages/evenements#roland-garros" class="text-gray-200 hover:text-white transition">Roland Garros</a></li>
+                        <li><a href="/pages/evenements#wimbledon" class="text-gray-200 hover:text-white transition">Wimbledon</a></li>
+                        <li><a href="/pages/evenements#us-open" class="text-gray-200 hover:text-white transition">US Open</a></li>
                     </ul>
                 </div>
                 <div>
