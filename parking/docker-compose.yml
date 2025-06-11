@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  security-day-website:
+    build:
+      context: .
+    image: security-day-2025-parking
+    container_name: security-day-2025-parking
+    restart: unless-stopped
+    ports:
+      - "3100:3000"
+    environment:
+      - PORT=3000
+      #- START_SPECIAL_DATE=2025-07-01T14:30:00+02:00
+      #- END_SPECIAL_DATE=2025-07-01T17:30:00+02:00
+      - START_SPECIAL_DATE=2025-06-10T18:30:00+02:00
+      - END_SPECIAL_DATE=2025-06-14T19:30:00+02:00
+      - TZ=Europe/Paris
+      #- START_VISITEUR=1000  # Commencer le compteur à 1000 visiteurs
+    volumes:
+      - ./index.html:/app/index.html
+      - ./index.js:/app/index.js
+      - ./public:/app/public
+    networks:
+      - security-day-network
+
+networks:
+  security-day-network:
+    driver: bridge

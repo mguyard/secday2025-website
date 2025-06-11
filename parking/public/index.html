@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SecurityDay 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+    }
+    .background-image {
+      background-image: url('images/background_desktop.png');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      position: fixed;
+    }
+    .background-image.special-period {
+      background-image: url('images/background_desktop_session.png');
+    }
+    @media (max-width: 768px) {
+      .background-image {
+        background-image: url('images/background_mobile.png');
+      }
+      .background-image.special-period {
+        background-image: url('images/background_mobile_session.png');
+      }
+    }
+    .message-container {
+      position: absolute;
+      bottom: 10%;
+      left: 0;
+      right: 0;
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      border-radius: 8px;
+      margin: 0 20px;
+    }
+    #message {
+      white-space: pre-line;  /* Cette propriété permet d'interpréter les \n comme des sauts de ligne */
+    }
+  </style>
+</head>
+<body class="bg-gray-900">
+  <div id="background" class="background-image"></div>
+  
+  <div class="message-container">
+    <h2 class="text-xl md:text-3xl font-bold mb-2" id="visitor-count">Chargement...</h2>
+    <p class="text-lg md:text-2xl" id="message">Chargement...</p>
+  </div>
+
+  <script>
+    // Fonction pour formater correctement les nombres ordinaux en français
+    function formatOrdinal(num) {
+      if (num === 1) {
+        return "1er";
+      } else if (num === 2) {
+        return "2nd";
+      } else {
+        return `${num}ème`;
+      }
+    }
+
+    // Fonction pour récupérer et afficher les données
+    async function loadData() {
+      try {
+        const response = await fetch('/api/stats');
+        const data = await response.json();
+        
+        // Mise à jour du message et du compteur
+        document.getElementById('visitor-count').textContent = `Vous êtes le ${formatOrdinal(data.visitorCount)} visiteur`;
+        document.getElementById('message').textContent = data.message;
+        
+        // Mise à jour de l'image de fond selon la période
+        const backgroundElement = document.getElementById('background');
+        if (data.isSpecialPeriod) {
+          backgroundElement.classList.add('special-period');
+        } else {
+          backgroundElement.classList.remove('special-period');
+        }
+      } catch (error) {
+        console.error('Erreur lors du chargement des données:', error);
+      }
+    }
+
+    // Charger les données au chargement de la page
+    loadData();
+  </script>
+</body>
+</html>
